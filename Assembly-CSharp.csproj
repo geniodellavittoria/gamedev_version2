@@ -61,8 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Controllers\BonusItemController.cs" />
     <Compile Include="Assets\Controllers\CameraController.cs" />
     <Compile Include="Assets\Controllers\InputController.cs" />
+    <Compile Include="Assets\Controllers\LoadSceneOnClick.cs" />
     <Compile Include="Assets\GameObjects\Enemies\IEnemy.cs" />
     <Compile Include="Assets\GameObjects\Enemies\MovingEnemy.cs" />
     <Compile Include="Assets\GameObjects\GameCharacter\IGameCharacter.cs" />

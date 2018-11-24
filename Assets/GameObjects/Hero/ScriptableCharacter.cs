@@ -2,16 +2,14 @@
 using Assets.Controllers;
 using Assets.GameObjects.Hero;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.GameObjects.Character
 {
     public class ScriptableCharacter : MonoBehaviour, IHero
     {
-        public ScriptableCharacter()
-        {
-            
-        }
 
+        private bool isJumping;
         [SerializeField]
         private float _jumping;
 
@@ -32,6 +30,11 @@ namespace Assets.GameObjects.Character
 
         [SerializeField]
         private InputController inputController;
+        [SerializeField]
+        private BonusItemController bonusItemController;
+
+        public Text LifeText;
+
         private Rigidbody2D rb;
         private SphereCollider col;
 
@@ -118,7 +121,7 @@ namespace Assets.GameObjects.Character
 
         void Update()
         {
-
+            LifeText.text = Life.ToString();
         }
         public void Attack()
         {
@@ -132,7 +135,11 @@ namespace Assets.GameObjects.Character
 
         public void Jump()
         {
-            rb.AddForce(Vector2.up * Jumping * 10);
+            if (!isJumping)
+            {
+                rb.AddForce(Vector2.up * Jumping * 10);
+                isJumping = true;
+            }
         }
 
 
@@ -149,6 +156,19 @@ namespace Assets.GameObjects.Character
         public void TakeDamage(double damage)
         {
             throw new NotImplementedException();
+        }
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.tag == "ground")
+            {
+                isJumping = false;
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            bonusItemController.Consume(col,this);
         }
     }
 }
