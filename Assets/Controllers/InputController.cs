@@ -11,8 +11,6 @@ namespace Assets.Controllers
         public event Action Shoot = delegate { };
 
         protected static InputController s_Instance;
-        [SerializeField]
-        private GameObject hero;
 
         public static InputController Instance
         {

@@ -5,7 +5,7 @@ namespace Assets.GameObjects.Hero
 {
     public interface IHero : IGameCharacter
     {
-        double Height { get; set; }
+        float Jumping { get; set; }
 
         void Jump();
     }

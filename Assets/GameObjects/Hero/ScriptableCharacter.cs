@@ -13,7 +13,7 @@ namespace Assets.GameObjects.Character
         }
 
         [SerializeField]
-        private double _height;
+        private float _jumping;
 
         [SerializeField]
         private float _speed;
@@ -29,22 +29,22 @@ namespace Assets.GameObjects.Character
 
         [SerializeField]
         private bool _isDead;
-        private Rigidbody rb;
-        private SphereCollider col;
-        private float jumpForce = 7;
-        float runSpeed = 10;
-        float horizontalMove = 0f;
 
-        public double Height
+        [SerializeField]
+        private InputController inputController;
+        private Rigidbody2D rb;
+        private SphereCollider col;
+
+        public float Jumping
         {
             get
             {
-                return _height;
+                return _jumping;
             }
 
             set
             {
-                _height = value;
+                _jumping = value;
             }
         }
 
@@ -112,7 +112,7 @@ namespace Assets.GameObjects.Character
         {
             inputController.Move += this.Move;
             inputController.Jump += this.Jump;
-            rb = GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody2D>();
             col = GetComponent<SphereCollider>();
         }
 
@@ -132,15 +132,18 @@ namespace Assets.GameObjects.Character
 
         public void Jump()
         {
-            rb.AddForce(Vector2.up * jumpForce);
+            rb.AddForce(Vector2.up * Jumping * 10);
         }
 
 
         public void Move()
         {
-            horizontalMove = Input.GetAxis("Horizontal") + runSpeed;
+            float moveHorizontal = Input.GetAxis("Horizontal");
 
-            
+            Vector2 movement = new Vector2(moveHorizontal, 0.0f);
+
+            rb.AddForce(movement * Speed);
+
         }
         
         public void TakeDamage(double damage)
