@@ -9,6 +9,7 @@ namespace Assets.Controllers
         public event Action Jump = delegate { };
         public event Action Move = delegate { };
         public event Action Shoot = delegate { };
+        public event Action Pause = delegate { };
 
         protected static InputController s_Instance;
 
@@ -36,6 +37,10 @@ namespace Assets.Controllers
             if (Input.GetKey(KeyCode.D))
             {
                 Move();
+            }
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                Pause();
             }
         }
 

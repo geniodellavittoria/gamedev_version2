@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33165330514608066}
   - component: {fileID: 23932032121798818}
   - component: {fileID: 135725955498800462}
+  - component: {fileID: 114487514402051976}
   m_Layer: 0
   m_Name: Shoot
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716976391338184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.74, y: -0.58, z: -0.0005976889}
+  m_LocalPosition: {x: 7.2825975, y: -0.57267094, z: -0.0005976889}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,6 +85,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716976391338184}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114487514402051976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716976391338184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb83dffbc30745f882eb2562bd1ac38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135725955498800462
 SphereCollider:
   m_ObjectHideFlags: 1
