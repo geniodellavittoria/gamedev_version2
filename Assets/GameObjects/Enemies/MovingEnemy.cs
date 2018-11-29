@@ -87,14 +87,14 @@ namespace Assets.GameObjects.Enemies
 
         }
 
-        public void Attack()
+        public void Shoot()
         {
             throw new NotImplementedException();
         }
 
         public void Die()
         {
-            throw new NotImplementedException();
+            Destroy(gameObject);
         }
 
         public void Move()
@@ -111,11 +111,15 @@ namespace Assets.GameObjects.Enemies
 
         public void TakeDamage(double damage)
         {
-            throw new NotImplementedException();
+            this.Life -= damage;
         }
 
         void Update()
         {
+            if (this.Life <= 0)
+            {
+                Die();
+            }
             Move();
         }
 

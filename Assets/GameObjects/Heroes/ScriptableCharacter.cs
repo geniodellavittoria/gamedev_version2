@@ -8,7 +8,9 @@ namespace Assets.GameObjects.Characters
 {
     public class ScriptableCharacter : MonoBehaviour, IHero
     {
-
+        private bool isAttacking;
+        private float attackTimer = 0;
+        private float attackCd = 0.3f;
         private bool isJumping;
         [SerializeField]
         private float _jumping;
@@ -29,12 +31,18 @@ namespace Assets.GameObjects.Characters
         private bool _isDead;
 
         [SerializeField]
+        private float _attackDmg;
+
+        [SerializeField]
+        private float _shootDmg;
+
+        [SerializeField]
         private InputController inputController;
         [SerializeField]
         private BonusItemController bonusItemController;
 
         public Text LifeText;
-
+        public Collider2D attackTrigger;
         private Rigidbody2D rb;
         private SphereCollider col;
 
@@ -111,10 +119,42 @@ namespace Assets.GameObjects.Characters
             }
         }
 
+        public float AttackDmg
+        {
+            get
+            {
+                return _attackDmg;
+            }
+
+            set
+            {
+                _attackDmg = value;
+            }
+        }
+
+        public float ShootDmg
+        {
+            get
+            {
+                return _shootDmg;
+            }
+            set
+            {
+                _shootDmg = value;
+            }
+        }
+
+
+        public void Awake()
+        {
+            this.attackTrigger.enabled = false;
+        }
+
         void Start()
         {
             inputController.Move += this.Move;
             inputController.Jump += this.Jump;
+            inputController.Attack += this.Attack;
             rb = GetComponent<Rigidbody2D>();
             col = GetComponent<SphereCollider>();
         }
@@ -122,10 +162,30 @@ namespace Assets.GameObjects.Characters
         void Update()
         {
             LifeText.text = Life.ToString();
+            if (isAttacking)
+            {
+                if (attackTimer > 0)
+                {
+                    attackTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    isAttacking = false;
+                    attackTrigger.enabled = false;
+                }
+            }
         }
+
+        public void Shoot()
+        {
+
+        }
+
         public void Attack()
         {
-            throw new NotImplementedException();
+            isAttacking = true;
+            attackTimer = attackCd;
+            attackTrigger.enabled = true;
         }
 
         public void Die()
@@ -160,7 +220,8 @@ namespace Assets.GameObjects.Characters
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.tag == "ground")
+            if (col.gameObject.CompareTag("ground") 
+                || col.gameObject.CompareTag("enemy"))
             {
                 isJumping = false;
             }
@@ -168,7 +229,15 @@ namespace Assets.GameObjects.Characters
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            bonusItemController.Consume(col, this);
+            if (col.CompareTag("enemy"))
+            {
+                col.SendMessageUpwards("TakeDamage", this.AttackDmg);
+            }
+
+            else if (col.CompareTag("bonus"))
+            {
+                bonusItemController.Consume(col, this);
+            }
         }
     }
 }

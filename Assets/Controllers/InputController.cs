@@ -10,6 +10,7 @@ namespace Assets.Controllers
         public event Action Move = delegate { };
         public event Action Shoot = delegate { };
         public event Action Pause = delegate { };
+        public event Action Attack = delegate { };
 
         protected static InputController s_Instance;
 
@@ -41,6 +42,10 @@ namespace Assets.Controllers
             if (Input.GetKey(KeyCode.Escape))
             {
                 Pause();
+            }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Attack();
             }
         }
 

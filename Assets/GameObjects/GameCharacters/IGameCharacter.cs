@@ -11,7 +11,7 @@ namespace Assets.GameObjects.GameCharacters
         double Strength { get; set; }
         bool IsDead { get; set; }
 
-        void Attack();
+        void Shoot();
 
         void Die();
 

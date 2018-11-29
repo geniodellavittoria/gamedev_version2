@@ -77,34 +77,7 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
-        public void Attack()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Die()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Move()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void TakeDamage(double damage)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
+        public void Shoot()
         {
             if (Time.time > nextFire)
             {
@@ -118,7 +91,37 @@ namespace Assets.GameObjects.Enemies
 
                 ShotController.Shoot(shot);
             }
+        }
 
+        public void Die()
+        {
+            Destroy(gameObject);
+        }
+
+        public void Move()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void TakeDamage(double damage)
+        {
+            this.Life -= damage;
+        }
+
+        // Use this for initialization
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (this.Life <= 0)
+            {
+                Die();
+            }
+            Shoot();
         }
 
     }
