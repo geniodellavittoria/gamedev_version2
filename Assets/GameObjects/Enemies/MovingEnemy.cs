@@ -9,10 +9,10 @@ namespace Assets.GameObjects.Enemies
         private float _speed;
 
         [SerializeField]
-        private double _life;
+        private float _life;
 
         [SerializeField]
-        private double _strength;
+        private float _strength;
 
         [SerializeField]
         private bool _isEnemy;
@@ -20,7 +20,7 @@ namespace Assets.GameObjects.Enemies
         [SerializeField]
         private bool _isDead;
 
-        private bool MovingForward = true;
+        private bool movingRight = true;
 
         public float Speed
         {
@@ -34,7 +34,7 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
-        public double Life
+        public float Life
         {
             get
             {
@@ -46,7 +46,7 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
-        public double Strength
+        public float Strength
         {
             get
             {
@@ -99,17 +99,17 @@ namespace Assets.GameObjects.Enemies
 
         public void Move()
         {
-            if (MovingForward)
+            if (movingRight)
             {
-                transform.localPosition += new Vector3(_speed, 0) * Time.deltaTime;
+                transform.Translate(Vector2.left * Time.deltaTime * Speed);
             }
             else
             {
-                transform.localPosition += new Vector3(-_speed, 0) * Time.deltaTime;
+                transform.Translate(Vector2.right * Time.deltaTime * Speed);
             }
         }
 
-        public void TakeDamage(double damage)
+        public void TakeDamage(float damage)
         {
             this.Life -= damage;
         }
@@ -126,7 +126,7 @@ namespace Assets.GameObjects.Enemies
 
         void OnCollisionEnter2D(Collision2D collision)
         {
-            MovingForward = !MovingForward;
+            movingRight = !movingRight;
             //collision.rigidbody.isKinematic = true;
         }
 

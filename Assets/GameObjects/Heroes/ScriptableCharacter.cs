@@ -19,10 +19,10 @@ namespace Assets.GameObjects.Characters
         private float _speed;
 
         [SerializeField]
-        private double _life;
+        private float _life;
 
         [SerializeField]
-        private double _strength;
+        private float _strength;
 
         [SerializeField]
         private bool _isEnemy;
@@ -36,6 +36,8 @@ namespace Assets.GameObjects.Characters
         [SerializeField]
         private float _shootDmg;
 
+        [SerializeField]
+        private HeroMenuController heroMenuController;
         [SerializeField]
         private InputController inputController;
         [SerializeField]
@@ -72,7 +74,7 @@ namespace Assets.GameObjects.Characters
             }
         }
 
-        public double Life
+        public float Life
         {
             get
             {
@@ -84,7 +86,7 @@ namespace Assets.GameObjects.Characters
             }
         }
 
-        public double Strength
+        public float Strength
         {
             get
             {
@@ -163,6 +165,10 @@ namespace Assets.GameObjects.Characters
 
         void FixedUpdate()
         {
+            if(this.Life <= 0)
+            {
+                Die();
+            }
             LifeText.text = Life.ToString();
             if (isAttacking)
             {
@@ -192,7 +198,8 @@ namespace Assets.GameObjects.Characters
 
         public void Die()
         {
-            throw new NotImplementedException();
+            this.IsDead = true;
+            heroMenuController.ShowMenu();
         }
 
         public void Jump()
@@ -230,9 +237,9 @@ namespace Assets.GameObjects.Characters
             
         }
 
-        public void TakeDamage(double damage)
+        public void TakeDamage(float damage)
         {
-            throw new NotImplementedException();
+            this.Life -= damage;
         }
 
         private void OnCollisionEnter2D(Collision2D col)

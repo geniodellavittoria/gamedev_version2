@@ -21,13 +21,16 @@ namespace Assets.GameObjects.Enemies
         private float _speed;
 
         [SerializeField]
-        private double _life;
+        private float _life;
 
         [SerializeField]
-        private double _strength;
+        private float _strength;
 
         [SerializeField]
         private bool _isDead;
+
+        [SerializeField]
+        private float _shootDmg;
 
         public float Speed
         {
@@ -41,9 +44,7 @@ namespace Assets.GameObjects.Enemies
                 _speed = value;
             }
         }
-
-
-        public double Life
+        public float Life
         {
             get
             {
@@ -54,7 +55,7 @@ namespace Assets.GameObjects.Enemies
                 _life = value;
             }
         }
-        public double Strength
+        public float Strength
         {
             get
             {
@@ -76,7 +77,17 @@ namespace Assets.GameObjects.Enemies
                 _isDead = value;
             }
         }
-
+        public float ShootDmg
+        {
+            get
+            {
+                return _shootDmg;
+            }
+            set
+            {
+                _shootDmg = value;
+            }
+        }
         public void Shoot()
         {
             if (Time.time > nextFire)
@@ -86,7 +97,7 @@ namespace Assets.GameObjects.Enemies
                 var shot = Instantiate(Shot, gameObject.transform.position, Quaternion.identity);
 
                 shot.GetComponent<Shot>().ShotSpeed = 2;
-                shot.GetComponent<Shot>().ShotDamage = 1;
+                shot.GetComponent<Shot>().ShotDamage = this.ShootDmg;
                 shot.GetComponent<Shot>().IsEnemyShot = true;
 
                 ShotController.Shoot(shot);
@@ -103,7 +114,7 @@ namespace Assets.GameObjects.Enemies
             throw new System.NotImplementedException();
         }
 
-        public void TakeDamage(double damage)
+        public void TakeDamage(float damage)
         {
             this.Life -= damage;
         }

@@ -6,9 +6,12 @@ namespace Assets.GameObjects.Weapons
     public class Shot : MonoBehaviour
     {
         public bool IsEnemyShot { get; set; }
+        [SerializeField]
         public float ShotDamage { get; set; }
         public float ShotSpeed { get; set; }
         public Vector3 Position { get; set; }
+        [SerializeField]
+        private ParticleSystem explosion;
 
         public Shot(Vector3 position, bool isEnemyShot, float shotDamage, float shotSpeed)
         {
@@ -45,6 +48,16 @@ namespace Assets.GameObjects.Weapons
         private void Update()
         {
             Move();
+        }
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            var e = Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(e,e.main.duration);
+            if (col.gameObject.CompareTag("hero"))
+            {
+                col.gameObject.SendMessageUpwards("TakeDamage", this.ShotDamage);
+                Destroy(gameObject);
+            }
         }
     }
 }

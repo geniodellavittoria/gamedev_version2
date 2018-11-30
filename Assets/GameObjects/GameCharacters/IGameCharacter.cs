@@ -7,8 +7,8 @@ namespace Assets.GameObjects.GameCharacters
     {
 
         float Speed { get; set; }
-        double Life { get; set; }
-        double Strength { get; set; }
+        float Life { get; set; }
+        float Strength { get; set; }
         bool IsDead { get; set; }
 
         void Shoot();
@@ -17,6 +17,6 @@ namespace Assets.GameObjects.GameCharacters
 
         void Move();
 
-        void TakeDamage(double damage);
+        void TakeDamage(float damage);
     }
 }

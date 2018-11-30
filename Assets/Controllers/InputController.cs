@@ -48,6 +48,10 @@ namespace Assets.Controllers
             {
                 Attack();
             }
+            if (Input.GetKeyDown(KeyCode.J)){
+                Shoot();
+            }
+
         }
 
     }
