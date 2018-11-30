@@ -7,7 +7,8 @@ namespace Assets.Controllers
     public class InputController : MonoBehaviour
     {
         public event Action Jump = delegate { };
-        public event Action Move = delegate { };
+        public event Action MoveRight = delegate { };
+        public event Action MoveLeft = delegate { };
         public event Action Shoot = delegate { };
         public event Action Pause = delegate { };
         public event Action Attack = delegate { };
@@ -25,7 +26,7 @@ namespace Assets.Controllers
         void Start()
         {
         }
-        void Update()
+        void FixedUpdate()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -33,11 +34,11 @@ namespace Assets.Controllers
             }
             if (Input.GetKey(KeyCode.A))
             {
-                Move();
+                MoveLeft();
             }
             if (Input.GetKey(KeyCode.D))
             {
-                Move();
+                MoveRight();
             }
             if (Input.GetKey(KeyCode.Escape))
             {

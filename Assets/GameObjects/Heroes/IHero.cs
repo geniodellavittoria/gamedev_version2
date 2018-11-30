@@ -11,6 +11,9 @@ namespace Assets.GameObjects.Heroes
 
         void Jump();
 
+        void MoveRight();
+        void MoveLeft();
+
         void Attack();
     }
 }

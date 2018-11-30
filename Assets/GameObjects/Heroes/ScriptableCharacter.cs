@@ -45,6 +45,7 @@ namespace Assets.GameObjects.Characters
         public Collider2D attackTrigger;
         private Rigidbody2D rb;
         private SphereCollider col;
+        private bool lookingRight = true;
 
         public float Jumping
         {
@@ -152,14 +153,15 @@ namespace Assets.GameObjects.Characters
 
         void Start()
         {
-            inputController.Move += this.Move;
+            inputController.MoveRight += this.MoveRight;
+            inputController.MoveLeft += this.MoveLeft;
             inputController.Jump += this.Jump;
             inputController.Attack += this.Attack;
             rb = GetComponent<Rigidbody2D>();
             col = GetComponent<SphereCollider>();
         }
 
-        void Update()
+        void FixedUpdate()
         {
             LifeText.text = Life.ToString();
             if (isAttacking)
@@ -197,20 +199,35 @@ namespace Assets.GameObjects.Characters
         {
             if (!isJumping)
             {
-                rb.AddForce(Vector2.up * Jumping * 10);
+                rb.AddForce(Vector2.up * Jumping * 10 );
                 isJumping = true;
             }
         }
 
 
+        public void MoveRight()
+        {
+            if (!lookingRight)
+            {
+                transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+                lookingRight = true;
+            }
+            transform.Translate(Vector2.right * Time.deltaTime * Speed);
+        }
+
+        public void MoveLeft()
+        {
+            if (lookingRight)
+            {
+                transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+                lookingRight = false;
+            }
+            transform.Translate(Vector2.left * Time.deltaTime * Speed);
+        }
+
         public void Move()
         {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-
-            Vector2 movement = new Vector2(moveHorizontal, 0.0f);
-
-            rb.AddForce(movement * Speed);
-
+            
         }
 
         public void TakeDamage(double damage)
