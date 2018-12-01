@@ -39,7 +39,7 @@ namespace Assets.GameObjects.Characters
         private float _shotDmg;
 
         [SerializeField]
-        private float _shotSpeed;
+        private float _shotSpeed = 1;
 
         [SerializeField]
         private HeroMenuController heroMenuController;
@@ -211,18 +211,19 @@ namespace Assets.GameObjects.Characters
         public void Shoot()
         {
             var shot = shotController.Shoot(gameObject);
-            shot.transform.rotation = gameObject.transform.rotation;
+            shot.transform.rotation = transform.rotation;
+            shot.transform.position = transform.position + transform.forward;
 
             if (Direction == Direction.Right)
             {
-                shot.transform.position = gameObject.transform.position;
-                shot.GetComponent<Rigidbody2D>().velocity = Vector3.forward;
+                shot.GetComponent<Rigidbody2D>().velocity = Vector2.right * ShotSpeed;
             }
             else
             {
-                shot.transform.position = new Vector2(-transform.localScale.x, transform.localScale.y);
-                shot.GetComponent<Rigidbody2D>().velocity = Vector3.back;
+                //shot.transform.position = new Vector2(-transform.localScale.x, transform.localScale.y);
+                shot.GetComponent<Rigidbody2D>().velocity = Vector2.left * ShotSpeed;
             }
+            print(shot.GetComponent<Rigidbody2D>().velocity);
 
             shot.GetComponent<Shot>().ShotSpeed = _shotSpeed;
             shot.GetComponent<Shot>().ShotDamage = ShotDmg;

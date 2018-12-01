@@ -44,7 +44,7 @@ namespace Assets.GameObjects.Weapons
 
         public void Move()
         {
-            transform.localPosition -= new Vector3(-ShotSpeed, 0) * Time.deltaTime;
+            transform.position += Vector3.forward * ShotSpeed * Time.deltaTime;
         }
 
         private void Update()
