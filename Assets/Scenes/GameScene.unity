@@ -419,7 +419,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 176366693}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0389, y: -1.34, z: 0}
+  m_LocalPosition: {x: -2.0389, y: -1.59, z: 0}
   m_LocalScale: {x: 4.0225854, y: 1.1660488, z: 1}
   m_Children: []
   m_Father: {fileID: 1411570067}
@@ -499,7 +499,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 176366693}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -592,7 +592,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4425384682600554, guid: b33c45170500d40f18d08230b24db66f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.347
+      value: 6.25
       objectReference: {fileID: 0}
     - target: {fileID: 4425384682600554, guid: b33c45170500d40f18d08230b24db66f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -721,12 +721,12 @@ Prefab:
     - target: {fileID: 50435063355775728, guid: b33c45170500d40f18d08230b24db66f,
         type: 2}
       propertyPath: m_BodyType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 50435063355775728, guid: b33c45170500d40f18d08230b24db66f,
         type: 2}
       propertyPath: m_Constraints
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114260437988287654, guid: b33c45170500d40f18d08230b24db66f, type: 2}
@@ -915,7 +915,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 469036339}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -927,7 +927,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!1 &501814618 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1834888958040648, guid: b33c45170500d40f18d08230b24db66f,
@@ -1314,7 +1314,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000023841858, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1376,7 +1376,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 582119620}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1388,7 +1388,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 3
+  m_Constraints: 7
 --- !u!1 &618121084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,11 +1603,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4312996400260438, guid: f20633b94aaa6f64c9972bcc5b6962af, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.38366234
+      value: -0.51
       objectReference: {fileID: 0}
     - target: {fileID: 4312996400260438, guid: f20633b94aaa6f64c9972bcc5b6962af, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 4.092957
+      value: 4.25
       objectReference: {fileID: 0}
     - target: {fileID: 4312996400260438, guid: f20633b94aaa6f64c9972bcc5b6962af, type: 2}
       propertyPath: m_LocalRotation.x
