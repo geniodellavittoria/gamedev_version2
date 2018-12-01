@@ -49,10 +49,16 @@ namespace Assets.GameObjects.Weapons
         {
             Move();
         }
+
+        void OnBecameInvisible()
+        {
+            gameObject.SetActive(false);
+        }
+
         private void OnCollisionEnter2D(Collision2D col)
         {
             var e = Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(e,e.main.duration);
+            Destroy(e, e.main.duration);
             if (col.gameObject.CompareTag("hero"))
             {
                 col.gameObject.SendMessageUpwards("TakeDamage", this.ShotDamage);

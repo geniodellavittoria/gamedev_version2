@@ -40,7 +40,7 @@ namespace Assets.Controllers
             {
                 MoveRight();
             }
-            if (Input.GetKey(KeyCode.Escape))
+            if (Input.GetKeyUp(KeyCode.Escape))
             {
                 Pause();
             }

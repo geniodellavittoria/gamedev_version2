@@ -8,7 +8,8 @@ namespace Assets.GameObjects.Enemies
     public class TowerEnemy : MonoBehaviour, IEnemy
     {
         [SerializeField]
-        public ShotController ShotController;
+        public GameObject GameManager;
+        private ShotController ShotController;
 
         public float fireRate;
 
@@ -95,10 +96,12 @@ namespace Assets.GameObjects.Enemies
                 nextFire = Time.time + fireRate;
 
                 var shot = Instantiate(Shot, gameObject.transform.position, Quaternion.identity);
+                shot.transform.parent = GameObject.Find("Shots").transform;
 
                 shot.GetComponent<Shot>().ShotSpeed = 2;
                 shot.GetComponent<Shot>().ShotDamage = this.ShootDmg;
                 shot.GetComponent<Shot>().IsEnemyShot = true;
+
 
                 ShotController.Shoot(shot);
             }
@@ -122,7 +125,7 @@ namespace Assets.GameObjects.Enemies
         // Use this for initialization
         void Start()
         {
-
+            ShotController = GameManager.GetComponent<ShotController>();
         }
 
         // Update is called once per frame
