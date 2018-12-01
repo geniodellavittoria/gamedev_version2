@@ -4,7 +4,7 @@ using System;
 
 namespace Assets.Controllers
 {
-    public class HeroMenuController: MonoBehaviour
+    public class HeroMenuController : MonoBehaviour
     {
         [SerializeField]
         private GameObject HeroMenu;
@@ -24,6 +24,7 @@ namespace Assets.Controllers
 
         public void ShowMenu()
         {
+            Time.timeScale = 0;
             lifeText.SetActive(false);
             bonusText.SetActive(false);
             HeroMenu.SetActive(true);

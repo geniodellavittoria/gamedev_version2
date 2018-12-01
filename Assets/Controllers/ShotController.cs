@@ -44,22 +44,6 @@ namespace Assets.Controllers
             return temp;
         }
 
-        public GameObject GetShot()
-        {
-            return ShotPool.Find(go => go.activeInHierarchy == false);
-        }
-
-        /*public void Shoot(GameObject shot)
-        {
-            Shots.Add(shot);
-            //Shots.Add(new Shot(position, isEnemyShot, shotDamage, shotSpeed));
-        }*/
-
-        public void RemoveShootsOutOfScreen()
-        {
-
-        }
-
 
     }
 }

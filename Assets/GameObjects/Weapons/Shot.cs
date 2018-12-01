@@ -11,7 +11,9 @@ namespace Assets.GameObjects.Weapons
         public float ShotSpeed { get; set; }
         public Vector3 Position { get; set; }
         [SerializeField]
-        private ParticleSystem explosion;
+        private ParticleSystem explosionPrefab;
+
+        private ParticleSystem Explosion = null;
 
         public Shot(Vector3 position, bool isEnemyShot, float shotDamage, float shotSpeed)
         {
@@ -34,7 +36,7 @@ namespace Assets.GameObjects.Weapons
             ShotSpeed = 1;
         }
 
-        private void Start()
+        public void Start()
         {
             //transform.position = Position;
             ShotSpeed = 1;
@@ -57,13 +59,21 @@ namespace Assets.GameObjects.Weapons
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            var e = Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(e, e.main.duration);
-            if (col.gameObject.CompareTag("hero"))
+            if (col.gameObject != gameObject)
             {
-                col.gameObject.SendMessageUpwards("TakeDamage", this.ShotDamage);
+                if (Explosion == null)
+                {
+                    Explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+                    Explosion.transform.parent = GameObject.Find("Particles").transform;
+
+                }
+                Explosion.Play();
+                if (col.gameObject.CompareTag("hero"))
+                {
+                    col.gameObject.SendMessageUpwards("TakeDamage", this.ShotDamage);
+                }
+                gameObject.SetActive(false);
             }
-            gameObject.SetActive(false);
         }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - bonus
   - enemy
   - hero
+  - shot
   layers:
   - Default
   - TransparentFX
