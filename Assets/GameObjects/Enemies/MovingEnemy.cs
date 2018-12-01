@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.GameObjects.Weapons;
 using Assets.Scripts;
 using UnityEngine;
 
@@ -20,6 +21,12 @@ namespace Assets.GameObjects.Enemies
 
         [SerializeField]
         private bool _isDead;
+
+        [SerializeField]
+        private float _shotDmg;
+
+        [SerializeField]
+        private float _shotSpeed = 1;
 
         private Direction Direction = Direction.Right;
 
@@ -83,6 +90,30 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
+        public float ShotDmg
+        {
+            get
+            {
+                return _shotDmg;
+            }
+            set
+            {
+                _shotDmg = value;
+            }
+        }
+
+        public float ShotSpeed
+        {
+            get
+            {
+                return _shotSpeed;
+            }
+            set
+            {
+                _shotSpeed = value;
+            }
+        }
+
         public MovingEnemy()
         {
 
@@ -113,7 +144,11 @@ namespace Assets.GameObjects.Enemies
 
         public void TakeDamage(float damage)
         {
-            this.Life -= damage;
+            _life -= damage;
+            if (Life <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
 
         void Update()
@@ -129,7 +164,11 @@ namespace Assets.GameObjects.Enemies
         {
             if (collision.gameObject.CompareTag("shot"))
             {
-                return;
+                var shot = collision.gameObject.GetComponent<Shot>();
+                if (!shot.IsEnemyShot)
+                {
+                    TakeDamage(shot.ShotDamage);
+                }
             }
             var contactSide = ChangeDirection(collision);
             if (contactSide == Direction.Down || contactSide == DirectionMethods.ReverseDirection(Direction))

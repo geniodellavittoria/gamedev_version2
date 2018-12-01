@@ -91,7 +91,7 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
-        public float ShootDmg
+        public float ShotDmg
         {
             get
             {
@@ -100,6 +100,18 @@ namespace Assets.GameObjects.Enemies
             set
             {
                 _shotDmg = value;
+            }
+        }
+
+        public float ShotSpeed
+        {
+            get
+            {
+                return _shotSpeed;
+            }
+            set
+            {
+                _shotSpeed = value;
             }
         }
 
@@ -118,8 +130,8 @@ namespace Assets.GameObjects.Enemies
                 shot.transform.rotation = gameObject.transform.rotation;
                 shot.GetComponent<Rigidbody2D>().velocity = (Hero.transform.position - shot.transform.position).normalized * 2;
 
-                shot.GetComponent<Shot>().ShotSpeed = _shotSpeed;
-                shot.GetComponent<Shot>().ShotDamage = this.ShootDmg;
+                shot.GetComponent<Shot>().ShotSpeed = ShotSpeed;
+                shot.GetComponent<Shot>().ShotDamage = ShotDmg;
                 shot.GetComponent<Shot>().IsEnemyShot = true;
                 shot.SetActive(true);
 
@@ -173,5 +185,16 @@ namespace Assets.GameObjects.Enemies
             Shoot();
         }
 
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("shot"))
+            {
+                var shot = collision.gameObject.GetComponent<Shot>();
+                if (!shot.IsEnemyShot)
+                {
+                    TakeDamage(shot.ShotDamage);
+                }
+            }
+        }
     }
 }

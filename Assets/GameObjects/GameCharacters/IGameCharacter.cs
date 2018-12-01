@@ -10,6 +10,8 @@ namespace Assets.GameObjects.GameCharacters
         float Life { get; set; }
         float Strength { get; set; }
         bool IsDead { get; set; }
+        float ShotDmg { get; set; }
+        float ShotSpeed { get; set; }
 
         void Shoot();
 

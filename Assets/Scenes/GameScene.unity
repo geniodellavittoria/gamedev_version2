@@ -3044,7 +3044,8 @@ MonoBehaviour:
   _isEnemy: 0
   _isDead: 0
   _attackDmg: 5
-  _shootDmg: 0
+  _shotDmg: 5
+  _shotSpeed: 1
   heroMenuController: {fileID: 1956401469}
   GameManager: {fileID: 1679600921}
   bonusItemController: {fileID: 1956401468}

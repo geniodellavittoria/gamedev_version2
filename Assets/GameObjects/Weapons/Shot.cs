@@ -59,20 +59,20 @@ namespace Assets.GameObjects.Weapons
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject != gameObject)
+            if (!IsEnemyShot && col.gameObject.CompareTag("hero"))
             {
-                if (Explosion == null)
-                {
-                    Explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
-                    Explosion.transform.parent = GameObject.Find("Particles").transform;
-
-                }
-                Explosion.Play();
-                if (col.gameObject.CompareTag("hero"))
-                {
-                    col.gameObject.SendMessageUpwards("TakeDamage", this.ShotDamage);
-                }
-                gameObject.SetActive(false);
+                return;
+            }
+            if (Explosion == null)
+            {
+                Explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+                Explosion.transform.parent = GameObject.Find("Particles").transform;
+            }
+            Explosion.Play();
+            gameObject.SetActive(false);
+            if (col.gameObject.CompareTag("hero"))
+            {
+                col.gameObject.SendMessageUpwards("TakeDamage", this.ShotDamage);
             }
         }
     }

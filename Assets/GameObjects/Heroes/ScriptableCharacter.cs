@@ -1,6 +1,8 @@
 ﻿using System;
 using Assets.Controllers;
 using Assets.GameObjects.Heroes;
+using Assets.GameObjects.Weapons;
+using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,7 +36,10 @@ namespace Assets.GameObjects.Characters
         private float _attackDmg;
 
         [SerializeField]
-        private float _shootDmg;
+        private float _shotDmg;
+
+        [SerializeField]
+        private float _shotSpeed;
 
         [SerializeField]
         private HeroMenuController heroMenuController;
@@ -42,6 +47,7 @@ namespace Assets.GameObjects.Characters
         private GameObject GameManager;
 
         private InputController inputController;
+        private ShotController shotController;
 
         [SerializeField]
         private BonusItemController bonusItemController;
@@ -50,7 +56,7 @@ namespace Assets.GameObjects.Characters
         public Collider2D attackTrigger;
         private Rigidbody2D rb;
         private SphereCollider col;
-        private bool lookingRight = true;
+        private Direction Direction = Direction.Right;
 
         public float Jumping
         {
@@ -138,15 +144,27 @@ namespace Assets.GameObjects.Characters
             }
         }
 
-        public float ShootDmg
+        public float ShotDmg
         {
             get
             {
-                return _shootDmg;
+                return _shotDmg;
             }
             set
             {
-                _shootDmg = value;
+                _shotDmg = value;
+            }
+        }
+
+        public float ShotSpeed
+        {
+            get
+            {
+                return _shotSpeed;
+            }
+            set
+            {
+                _shotSpeed = value;
             }
         }
 
@@ -158,11 +176,13 @@ namespace Assets.GameObjects.Characters
 
         void Start()
         {
+            shotController = GameManager.GetComponent<ShotController>();
             inputController = GameManager.GetComponent<InputController>();
-            inputController.MoveRight += this.MoveRight;
-            inputController.MoveLeft += this.MoveLeft;
-            inputController.Jump += this.Jump;
-            inputController.Attack += this.Attack;
+            inputController.MoveRight += MoveRight;
+            inputController.MoveLeft += MoveLeft;
+            inputController.Jump += Jump;
+            inputController.Attack += Attack;
+            inputController.Shoot += Shoot;
             rb = GetComponent<Rigidbody2D>();
             col = GetComponent<SphereCollider>();
         }
@@ -190,7 +210,24 @@ namespace Assets.GameObjects.Characters
 
         public void Shoot()
         {
+            var shot = shotController.Shoot(gameObject);
+            shot.transform.rotation = gameObject.transform.rotation;
 
+            if (Direction == Direction.Right)
+            {
+                shot.transform.position = gameObject.transform.position;
+                shot.GetComponent<Rigidbody2D>().velocity = Vector3.forward;
+            }
+            else
+            {
+                shot.transform.position = new Vector2(-transform.localScale.x, transform.localScale.y);
+                shot.GetComponent<Rigidbody2D>().velocity = Vector3.back;
+            }
+
+            shot.GetComponent<Shot>().ShotSpeed = _shotSpeed;
+            shot.GetComponent<Shot>().ShotDamage = ShotDmg;
+            shot.GetComponent<Shot>().IsEnemyShot = false;
+            shot.SetActive(true);
         }
 
         public void Attack()
@@ -218,20 +255,20 @@ namespace Assets.GameObjects.Characters
 
         public void MoveRight()
         {
-            if (!lookingRight)
+            if (Direction != Direction.Right)
             {
                 transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-                lookingRight = true;
+                Direction = Direction.Right;
             }
             transform.Translate(Vector2.right * Time.deltaTime * Speed);
         }
 
         public void MoveLeft()
         {
-            if (lookingRight)
+            if (Direction == Direction.Right)
             {
                 transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-                lookingRight = false;
+                Direction = Direction.Left;
             }
             transform.Translate(Vector2.left * Time.deltaTime * Speed);
         }
