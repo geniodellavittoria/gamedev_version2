@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.GameObjects.Weapons;
 using Assets.Controllers;
+using Assets.Scripts;
 
 namespace Assets.GameObjects.Enemies
 {
@@ -10,6 +11,11 @@ namespace Assets.GameObjects.Enemies
         [SerializeField]
         public GameObject GameManager;
         private ShotController ShotController;
+
+        private Direction Direction = Direction.Left;
+
+        [SerializeField]
+        public GameObject Hero;
 
         public float fireRate;
 
@@ -31,7 +37,10 @@ namespace Assets.GameObjects.Enemies
         private bool _isDead;
 
         [SerializeField]
-        private float _shootDmg;
+        private float _shotDmg = 3;
+
+        [SerializeField]
+        private float _shotSpeed = 1;
 
         public float Speed
         {
@@ -45,6 +54,7 @@ namespace Assets.GameObjects.Enemies
                 _speed = value;
             }
         }
+
         public float Life
         {
             get
@@ -56,6 +66,7 @@ namespace Assets.GameObjects.Enemies
                 _life = value;
             }
         }
+
         public float Strength
         {
             get
@@ -67,6 +78,7 @@ namespace Assets.GameObjects.Enemies
                 _strength = value;
             }
         }
+
         public bool IsDead
         {
             get
@@ -78,34 +90,57 @@ namespace Assets.GameObjects.Enemies
                 _isDead = value;
             }
         }
+
         public float ShootDmg
         {
             get
             {
-                return _shootDmg;
+                return _shotDmg;
             }
             set
             {
-                _shootDmg = value;
+                _shotDmg = value;
             }
         }
+
         public void Shoot()
         {
+            GetHeroDirection();
+
+
             if (Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
 
-                var shot = Instantiate(Shot, gameObject.transform.position, Quaternion.identity);
-                shot.transform.parent = GameObject.Find("Shots").transform;
+                //var shot = Instantiate(Shot, gameObject.transform.position, gameObject.transform.rotation);
+                var shot = ShotController.Shoot(gameObject);
+                shot.transform.position = gameObject.transform.position;
+                shot.transform.rotation = gameObject.transform.rotation;
+                shot.GetComponent<Rigidbody2D>().velocity = (Hero.transform.position - shot.transform.position).normalized * 2;
 
-                shot.GetComponent<Shot>().ShotSpeed = 2;
+                shot.GetComponent<Shot>().ShotSpeed = _shotSpeed;
                 shot.GetComponent<Shot>().ShotDamage = this.ShootDmg;
                 shot.GetComponent<Shot>().IsEnemyShot = true;
+                shot.SetActive(true);
 
-
-                ShotController.Shoot(shot);
             }
         }
+
+        public void GetHeroDirection()
+        {
+            var position = Hero.transform.position;
+            if (position.x < gameObject.transform.position.x && Direction != Direction.Left)
+            {
+                transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+                Direction = Direction.Left;
+            }
+            if (position.x > gameObject.transform.position.x && Direction != Direction.Right)
+            {
+                transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+                Direction = Direction.Right;
+            }
+        }
+
 
         public void Die()
         {

@@ -62,8 +62,8 @@ namespace Assets.GameObjects.Weapons
             if (col.gameObject.CompareTag("hero"))
             {
                 col.gameObject.SendMessageUpwards("TakeDamage", this.ShotDamage);
-                Destroy(gameObject);
             }
+            gameObject.SetActive(false);
         }
     }
 }

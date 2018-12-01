@@ -33,7 +33,7 @@ namespace Assets.Controllers
             }
         }
 
-        public void Shoot(GameObject shooter)
+        public GameObject Shoot(GameObject shooter)
         {
             GameObject temp = ShotPool.Find(go => go.activeInHierarchy == false);
             if (temp != null)
@@ -41,6 +41,12 @@ namespace Assets.Controllers
                 temp.transform.position = shooter.transform.position;
                 temp.SetActive(true);
             }
+            return temp;
+        }
+
+        public GameObject GetShot()
+        {
+            return ShotPool.Find(go => go.activeInHierarchy == false);
         }
 
         /*public void Shoot(GameObject shot)

@@ -23,9 +23,6 @@ namespace Assets.GameObjects.Enemies
 
         private Direction Direction = Direction.Right;
 
-        [SerializeField]
-        private Collider2D FrontCollider;
-
         public float Speed
         {
             get
@@ -130,6 +127,10 @@ namespace Assets.GameObjects.Enemies
 
         void OnCollisionEnter2D(Collision2D collision)
         {
+            if (collision.gameObject.CompareTag("shot"))
+            {
+                return;
+            }
             var contactSide = ChangeDirection(collision);
             if (contactSide == Direction.Down || contactSide == DirectionMethods.ReverseDirection(Direction))
             {
