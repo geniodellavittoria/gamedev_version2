@@ -7,7 +7,7 @@ namespace Assets.GameObjects.Weapons
     {
         public bool IsEnemyShot { get; set; }
         [SerializeField]
-        public float ShotDamage { get; set; }
+        public int ShotDamage { get; set; }
         public float ShotSpeed { get; set; }
         public Vector3 Position { get; set; }
         [SerializeField]
@@ -15,7 +15,7 @@ namespace Assets.GameObjects.Weapons
 
         private ParticleSystem Explosion = null;
 
-        public Shot(Vector3 position, bool isEnemyShot, float shotDamage, float shotSpeed)
+        public Shot(Vector3 position, bool isEnemyShot, int shotDamage, float shotSpeed)
         {
             Position = position;
             IsEnemyShot = isEnemyShot;

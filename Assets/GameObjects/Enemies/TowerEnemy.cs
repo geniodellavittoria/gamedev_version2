@@ -3,11 +3,15 @@ using System.Collections;
 using Assets.GameObjects.Weapons;
 using Assets.Controllers;
 using Assets.Scripts;
+using Assets.GameObjects.Characters;
 
 namespace Assets.GameObjects.Enemies
 {
     public class TowerEnemy : MonoBehaviour, IEnemy
     {
+        [SerializeField]
+        private Health health;
+
         [SerializeField]
         public GameObject GameManager;
         private ShotController ShotController;
@@ -28,16 +32,10 @@ namespace Assets.GameObjects.Enemies
         private float _speed;
 
         [SerializeField]
-        private float _life;
-
-        [SerializeField]
         private float _strength;
 
         [SerializeField]
-        private bool _isDead;
-
-        [SerializeField]
-        private float _shotDmg = 3;
+        private int _shotDmg = 3;
 
         [SerializeField]
         private float _shotSpeed = 1;
@@ -55,18 +53,6 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
-        public float Life
-        {
-            get
-            {
-                return _life;
-            }
-            set
-            {
-                _life = value;
-            }
-        }
-
         public float Strength
         {
             get
@@ -79,19 +65,7 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
-        public bool IsDead
-        {
-            get
-            {
-                return _isDead;
-            }
-            set
-            {
-                _isDead = value;
-            }
-        }
-
-        public float ShotDmg
+        public int ShotDmg
         {
             get
             {
@@ -153,20 +127,14 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
-
-        public void Die()
-        {
-            Destroy(gameObject);
-        }
-
         public void Move()
         {
-            throw new System.NotImplementedException();
+            return;
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(int damage)
         {
-            this.Life -= damage;
+            health.TakeDamage(damage);
         }
 
         // Use this for initialization
@@ -178,9 +146,9 @@ namespace Assets.GameObjects.Enemies
         // Update is called once per frame
         void Update()
         {
-            if (this.Life <= 0)
+            if (health.isDead)
             {
-                Die();
+                Destroy(gameObject);
             }
             Shoot();
         }

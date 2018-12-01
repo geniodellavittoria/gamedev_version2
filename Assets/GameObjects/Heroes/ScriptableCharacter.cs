@@ -10,6 +10,9 @@ namespace Assets.GameObjects.Characters
 {
     public class ScriptableCharacter : MonoBehaviour, IHero
     {
+        [SerializeField]
+        private HeroHealth health;
+
         private bool isAttacking;
         private float attackTimer = 0;
         private float attackCd = 0.3f;
@@ -21,22 +24,16 @@ namespace Assets.GameObjects.Characters
         private float _speed;
 
         [SerializeField]
-        private float _life;
-
-        [SerializeField]
         private float _strength;
 
         [SerializeField]
         private bool _isEnemy;
 
         [SerializeField]
-        private bool _isDead;
-
-        [SerializeField]
         private float _attackDmg;
 
         [SerializeField]
-        private float _shotDmg;
+        private int _shotDmg;
 
         [SerializeField]
         private float _shotSpeed = 1;
@@ -83,17 +80,6 @@ namespace Assets.GameObjects.Characters
             }
         }
 
-        public float Life
-        {
-            get
-            {
-                return _life;
-            }
-            set
-            {
-                _life = value;
-            }
-        }
 
         public float Strength
         {
@@ -119,18 +105,6 @@ namespace Assets.GameObjects.Characters
             }
         }
 
-        public bool IsDead
-        {
-            get
-            {
-                return _isDead;
-            }
-            set
-            {
-                _isDead = value;
-            }
-        }
-
         public float AttackDmg
         {
             get
@@ -144,7 +118,7 @@ namespace Assets.GameObjects.Characters
             }
         }
 
-        public float ShotDmg
+        public int ShotDmg
         {
             get
             {
@@ -165,6 +139,14 @@ namespace Assets.GameObjects.Characters
             set
             {
                 _shotSpeed = value;
+            }
+        }
+
+        public HeroHealth Health
+        {
+            get
+            {
+                return health;
             }
         }
 
@@ -189,11 +171,11 @@ namespace Assets.GameObjects.Characters
 
         void FixedUpdate()
         {
-            if (this.Life <= 0)
+            if (health.isDead)
             {
-                Die();
+                heroMenuController.ShowMenu();
             }
-            LifeText.text = Life.ToString();
+
             if (isAttacking)
             {
                 if (attackTimer > 0)
@@ -220,10 +202,8 @@ namespace Assets.GameObjects.Characters
             }
             else
             {
-                //shot.transform.position = new Vector2(-transform.localScale.x, transform.localScale.y);
                 shot.GetComponent<Rigidbody2D>().velocity = Vector2.left * ShotSpeed;
             }
-            print(shot.GetComponent<Rigidbody2D>().velocity);
 
             shot.GetComponent<Shot>().ShotSpeed = _shotSpeed;
             shot.GetComponent<Shot>().ShotDamage = ShotDmg;
@@ -236,12 +216,6 @@ namespace Assets.GameObjects.Characters
             isAttacking = true;
             attackTimer = attackCd;
             attackTrigger.enabled = true;
-        }
-
-        public void Die()
-        {
-            this.IsDead = true;
-            heroMenuController.ShowMenu();
         }
 
         public void Jump()
@@ -279,9 +253,9 @@ namespace Assets.GameObjects.Characters
 
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(int damage)
         {
-            this.Life -= damage;
+            health.TakeDamage(damage);
         }
 
         private void OnCollisionEnter2D(Collision2D col)

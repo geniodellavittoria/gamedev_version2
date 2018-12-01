@@ -22,7 +22,7 @@ namespace Assets.Controllers
             if (col.gameObject.CompareTag("bonus"))
             {
                 var bonus = GetBonusValue();
-                hero.Life += bonus;
+                hero.Health.AddHealth(bonus);
                 var text = "+" + bonus.ToString() + " Life";
                 col.gameObject.SetActive(false);
                 StartCoroutine(ShowText(text));

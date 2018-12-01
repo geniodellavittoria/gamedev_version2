@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.GameObjects.Characters;
 using Assets.GameObjects.Weapons;
 using Assets.Scripts;
 using UnityEngine;
@@ -8,10 +9,10 @@ namespace Assets.GameObjects.Enemies
     public class MovingEnemy : MonoBehaviour, IEnemy
     {
         [SerializeField]
-        private float _speed;
+        private Health health;
 
         [SerializeField]
-        private float _life;
+        private float _speed;
 
         [SerializeField]
         private float _strength;
@@ -20,10 +21,7 @@ namespace Assets.GameObjects.Enemies
         private bool _isEnemy;
 
         [SerializeField]
-        private bool _isDead;
-
-        [SerializeField]
-        private float _shotDmg;
+        private int _shotDmg;
 
         [SerializeField]
         private float _shotSpeed = 1;
@@ -39,18 +37,6 @@ namespace Assets.GameObjects.Enemies
             set
             {
                 _speed = value;
-            }
-        }
-
-        public float Life
-        {
-            get
-            {
-                return _life;
-            }
-            set
-            {
-                _life = value;
             }
         }
 
@@ -78,19 +64,7 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
-        public bool IsDead
-        {
-            get
-            {
-                return _isDead;
-            }
-            set
-            {
-                _isDead = value;
-            }
-        }
-
-        public float ShotDmg
+        public int ShotDmg
         {
             get
             {
@@ -142,10 +116,10 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(int damage)
         {
-            _life -= damage;
-            if (Life <= 0)
+            health.TakeDamage(damage);
+            if (health.isDead)
             {
                 Destroy(gameObject);
             }
@@ -153,11 +127,10 @@ namespace Assets.GameObjects.Enemies
 
         void Update()
         {
-            if (this.Life <= 0)
+            if (!health.isDead)
             {
-                Die();
+                Move();
             }
-            Move();
         }
 
         void OnCollisionEnter2D(Collision2D collision)
