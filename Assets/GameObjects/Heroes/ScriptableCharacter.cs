@@ -39,7 +39,10 @@ namespace Assets.GameObjects.Characters
         [SerializeField]
         private HeroMenuController heroMenuController;
         [SerializeField]
+        private GameObject GameManager;
+
         private InputController inputController;
+
         [SerializeField]
         private BonusItemController bonusItemController;
 
@@ -155,6 +158,7 @@ namespace Assets.GameObjects.Characters
 
         void Start()
         {
+            inputController = GameManager.GetComponent<InputController>();
             inputController.MoveRight += this.MoveRight;
             inputController.MoveLeft += this.MoveLeft;
             inputController.Jump += this.Jump;
@@ -165,7 +169,7 @@ namespace Assets.GameObjects.Characters
 
         void FixedUpdate()
         {
-            if(this.Life <= 0)
+            if (this.Life <= 0)
             {
                 Die();
             }
@@ -206,7 +210,7 @@ namespace Assets.GameObjects.Characters
         {
             if (!isJumping)
             {
-                rb.AddForce(Vector2.up * Jumping * 10 );
+                rb.AddForce(Vector2.up * Jumping * 10);
                 isJumping = true;
             }
         }
@@ -234,7 +238,7 @@ namespace Assets.GameObjects.Characters
 
         public void Move()
         {
-            
+
         }
 
         public void TakeDamage(float damage)
@@ -244,7 +248,7 @@ namespace Assets.GameObjects.Characters
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.CompareTag("ground") 
+            if (col.gameObject.CompareTag("ground")
                 || col.gameObject.CompareTag("enemy"))
             {
                 isJumping = false;
