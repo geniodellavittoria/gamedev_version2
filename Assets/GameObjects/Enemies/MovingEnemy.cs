@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Scripts;
 using UnityEngine;
 
 namespace Assets.GameObjects.Enemies
@@ -20,7 +21,10 @@ namespace Assets.GameObjects.Enemies
         [SerializeField]
         private bool _isDead;
 
-        private bool movingRight = true;
+        private Direction Direction = Direction.Right;
+
+        [SerializeField]
+        private Collider2D FrontCollider;
 
         public float Speed
         {
@@ -99,13 +103,14 @@ namespace Assets.GameObjects.Enemies
 
         public void Move()
         {
-            if (movingRight)
+            if (Direction == Direction.Right)
             {
-                transform.Translate(Vector2.left * Time.deltaTime * Speed);
+                transform.Translate(Vector2.right * Time.deltaTime * Speed);
+
             }
             else
             {
-                transform.Translate(Vector2.right * Time.deltaTime * Speed);
+                transform.Translate(Vector2.left * Time.deltaTime * Speed);
             }
         }
 
@@ -123,16 +128,56 @@ namespace Assets.GameObjects.Enemies
             Move();
         }
 
-
         void OnCollisionEnter2D(Collision2D collision)
         {
-            movingRight = !movingRight;
-            //collision.rigidbody.isKinematic = true;
+            var contactSide = ChangeDirection(collision);
+            if (contactSide == Direction.Down || contactSide == DirectionMethods.ReverseDirection(Direction))
+            {
+                return;
+            }
+            if (collision.gameObject.CompareTag("hero"))
+            {
+                // todo: handle attack on hero
+                return;
+            }
+
+            Direction = DirectionMethods.ReverseDirection(Direction);
+            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
 
         void OnCollisionExit2D(Collision2D collision)
         {
             //collision.rigidbody.isKinematic = false;
+        }
+
+        private Direction ChangeDirection(Collision2D collision)
+        {
+            var contactSide = Direction;
+
+            Vector3 contactPoint = collision.contacts[0].point;
+            Vector3 center = collision.collider.bounds.center;
+
+            float RectWidth = this.GetComponent<Collider2D>().bounds.size.x;
+            float RectHeight = this.GetComponent<Collider2D>().bounds.size.y;
+
+            if (contactPoint.y > center.y)
+            {
+                contactSide = Direction.Down;
+            }
+            else if (contactPoint.x > center.x)
+            {
+                contactSide = Direction.Left;
+            }
+            else if (contactPoint.x < center.x)
+            {
+                contactSide = Direction.Right;
+            }
+            else if (contactPoint.y < center.y)
+            {
+                contactSide = Direction.Up;
+            }
+
+            return contactSide;
         }
     }
 }
