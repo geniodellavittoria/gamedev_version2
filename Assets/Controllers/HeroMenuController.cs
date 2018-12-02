@@ -8,8 +8,8 @@ namespace Assets.Controllers
     {
         [SerializeField]
         private GameObject HeroMenu;
-        [SerializeField]
-        private GameObject lifeText;
+        //[SerializeField]
+        //private GameObject lifeText;
         [SerializeField]
         private GameObject bonusText;
 
@@ -25,7 +25,7 @@ namespace Assets.Controllers
         public void ShowMenu()
         {
             Time.timeScale = 0;
-            lifeText.SetActive(false);
+            //lifeText.SetActive(false);
             bonusText.SetActive(false);
             HeroMenu.SetActive(true);
         }

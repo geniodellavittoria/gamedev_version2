@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 212735407666751556}
   - component: {fileID: 114133457703218924}
   - component: {fileID: 114840256334095470}
+  - component: {fileID: 114863947469258198}
   m_Layer: 0
   m_Name: TowerEnemy
   m_TagString: ground
@@ -81,7 +82,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834888958040648}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -136,7 +137,7 @@ MonoBehaviour:
   Shot: {fileID: 1716976391338184, guid: 27614e39d2b054763abdd28b20479c89, type: 2}
   _speed: 0
   _strength: 10
-  ShootAttack: {fileID: 0}
+  ShootAttack: {fileID: 114863947469258198}
 --- !u!114 &114840256334095470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +152,21 @@ MonoBehaviour:
   startingHealth: 10
   currentHealth: 10
   flashSpeed: 5
+--- !u!114 &114863947469258198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834888958040648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd28a56818f841f1a5648a8437c9ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameManager: {fileID: 0}
+  _speed: 2
+  _damage: 3
+  _attackRate: 2
 --- !u!212 &212223067865254590
 SpriteRenderer:
   m_ObjectHideFlags: 1

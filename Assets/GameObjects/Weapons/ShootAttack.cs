@@ -115,8 +115,5 @@ namespace Assets.GameObjects.Weapons
             Timer = 0f;
         }
 
-
-
-
     }
 }

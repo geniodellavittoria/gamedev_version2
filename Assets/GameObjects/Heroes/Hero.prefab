@@ -146,8 +146,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1767333790234714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5229806, y: 0.09200393, z: 0}
-  m_LocalScale: {x: 1.4527239, y: 5.111329, z: 5}
+  m_LocalPosition: {x: -1.28, y: -0.27, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4718602926531390}
   - {fileID: 4963267117751026}
@@ -311,8 +311,6 @@ MonoBehaviour:
   shootAttack: {fileID: 114353380016747052}
   heroMenuController: {fileID: 114874790809300908}
   GameManager: {fileID: 0}
-  bonusItemController: {fileID: 114925118081090478}
-  LifeText: {fileID: 0}
 --- !u!114 &114353380016747052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -373,7 +371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HeroMenu: {fileID: 0}
-  lifeText: {fileID: 0}
   bonusText: {fileID: 0}
 --- !u!114 &114925118081090478
 MonoBehaviour:
