@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33726945045465008}
   - component: {fileID: 23515225237954666}
   - component: {fileID: 58883285306733592}
+  - component: {fileID: 114169326574531122}
   m_Layer: 0
   m_Name: BonusItemSpeed
   m_TagString: bonus
@@ -99,3 +100,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114169326574531122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1776617868254310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112023869a4344dbdb350a3420753c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 0}

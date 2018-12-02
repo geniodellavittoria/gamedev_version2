@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Application
+namespace Assets.GameObjects.BonusItems
 {
     public enum BonusItemType
     {
@@ -7,6 +7,7 @@ namespace Application
         Speed,
         Time,
         Toughness,
-        Vulnerability
+        Vulnerability,
+        Immutability
     }
 }

@@ -39,11 +39,6 @@ namespace Assets.GameObjects.Characters
 
         private InputController inputController;
 
-        [SerializeField]
-        private BonusItemController bonusItemController;
-
-        public Text LifeText;
-
         private Rigidbody2D rb;
         private SphereCollider col;
         private Direction Direction = Direction.Right;
@@ -185,14 +180,6 @@ namespace Assets.GameObjects.Characters
                 || col.gameObject.CompareTag("enemy"))
             {
                 isJumping = false;
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D col)
-        {
-            if (col.CompareTag("bonus"))
-            {
-                bonusItemController.Consume(col, this);
             }
         }
 

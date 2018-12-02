@@ -11,7 +11,7 @@ namespace Assets.GameObjects.Heroes
     {
         private InputController inputController;
 
-        private Direction direction;
+        private Direction direction = Direction.Right;
 
         private new void Start()
         {

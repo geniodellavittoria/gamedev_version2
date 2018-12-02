@@ -11,37 +11,34 @@ namespace Assets.Controllers
     {
         [SerializeField]
         public Text BonusText;
-        private int[] bonusValues = new int[] { 5, 10, 15, 20, 25 };
+
 
         public void Start()
         {
         }
 
-        public void Consume(Collider2D col, ScriptableCharacter hero)
+        /*public void Consume(Collider2D col, ScriptableCharacter hero)
         {
             if (col.gameObject.CompareTag("bonus"))
             {
-                var bonus = GetBonusValue();
                 hero.Health.AddHealth(bonus);
                 var text = "+" + bonus.ToString() + " Life";
                 col.gameObject.SetActive(false);
-                StartCoroutine(ShowText(text));
+
             }
+        }*/
+
+        public void DisplayText(string text)
+        {
+            StartCoroutine(ShowText(text));
         }
 
-        IEnumerator ShowText(string text)
+        public IEnumerator ShowText(string text)
         {
             BonusText.text = text;
             yield return new WaitForSeconds(3);
             BonusText.text = " ";
         }
-
-        private int GetBonusValue()
-        {
-            var ran = UnityEngine.Random.Range(0, bonusValues.Length);
-            return bonusValues[ran];
-        }
-
 
     }
 }
