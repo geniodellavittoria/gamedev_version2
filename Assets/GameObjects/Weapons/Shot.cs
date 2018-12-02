@@ -8,8 +8,10 @@ namespace Assets.GameObjects.Weapons
         public bool IsEnemyShot { get; set; }
         [SerializeField]
         public int ShotDamage { get; set; }
+
         public float ShotSpeed { get; set; }
         public Vector3 Position { get; set; }
+        public GameObject Shooter { get; set; }
         [SerializeField]
         private ParticleSystem explosionPrefab;
 
@@ -57,9 +59,9 @@ namespace Assets.GameObjects.Weapons
             gameObject.SetActive(false);
         }
 
-        private void OnCollisionEnter2D(Collision2D col)
+        private void OnTriggerEnter2D(Collider2D col)
         {
-            if (!IsEnemyShot && col.gameObject.CompareTag("hero"))
+            if (col.gameObject == Shooter || (!IsEnemyShot && col.gameObject.CompareTag("hero")) || col.gameObject.CompareTag("bonus"))
             {
                 return;
             }
@@ -68,6 +70,7 @@ namespace Assets.GameObjects.Weapons
                 Explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
                 Explosion.transform.parent = GameObject.Find("Particles").transform;
             }
+            Explosion.transform.position = gameObject.transform.position;
             Explosion.Play();
             gameObject.SetActive(false);
             if (col.gameObject.CompareTag("hero"))

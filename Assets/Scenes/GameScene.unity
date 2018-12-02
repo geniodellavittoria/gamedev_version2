@@ -572,6 +572,14 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1805442131495080, guid: e29cdc611654d44a7afb60510d232012, type: 2}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982753544109270, guid: e29cdc611654d44a7afb60510d232012, type: 2}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 212843918996037272, guid: e29cdc611654d44a7afb60510d232012, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: e29cdc611654d44a7afb60510d232012, type: 2}
@@ -2074,7 +2082,7 @@ GameObject:
   - component: {fileID: 1335401925}
   m_Layer: 0
   m_Name: AttackTrigger
-  m_TagString: Untagged
+  m_TagString: hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2223,7 +2231,7 @@ GameObject:
   - component: {fileID: 1400333619}
   m_Layer: 0
   m_Name: Form
-  m_TagString: Untagged
+  m_TagString: hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2410,7 +2418,7 @@ Prefab:
     - target: {fileID: 50435063355775728, guid: b33c45170500d40f18d08230b24db66f,
         type: 2}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33c45170500d40f18d08230b24db66f, type: 2}
@@ -2909,7 +2917,7 @@ MonoBehaviour:
   _gameManager: {fileID: 1679600921}
   _speed: 2
   _damage: 5
-  _attackRate: 0.05
+  _attackRate: 0.01
 --- !u!114 &1956401471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3082,7 +3090,7 @@ GameObject:
   - component: {fileID: 2006354864}
   m_Layer: 0
   m_Name: eye
-  m_TagString: Untagged
+  m_TagString: hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

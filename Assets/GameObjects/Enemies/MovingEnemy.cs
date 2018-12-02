@@ -175,6 +175,14 @@ namespace Assets.GameObjects.Enemies
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (collision.gameObject.CompareTag("shot"))
+            {
+                var shot = collision.gameObject.GetComponent<Shot>();
+                if (!shot.IsEnemyShot)
+                {
+                    TakeDamage(shot.ShotDamage);
+                }
+            }
             if (collision.gameObject == hero)
             {
                 heroInRange = true;

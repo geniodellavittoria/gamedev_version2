@@ -110,6 +110,7 @@ namespace Assets.GameObjects.Weapons
 
         protected void Shoot(GameObject shot)
         {
+            shot.GetComponent<Shot>().Shooter = gameObject;
             shot.SetActive(true);
             Timer = 0f;
         }

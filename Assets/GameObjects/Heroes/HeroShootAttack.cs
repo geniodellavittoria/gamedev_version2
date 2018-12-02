@@ -11,7 +11,9 @@ namespace Assets.GameObjects.Heroes
     {
         private InputController inputController;
 
-        private void Start()
+        private Direction direction;
+
+        private new void Start()
         {
             base.Start();
             inputController = InputManager.GetComponent<InputController>();
@@ -19,7 +21,10 @@ namespace Assets.GameObjects.Heroes
             {
                 Debug.LogError("GameObject does not contain inputController");
             }
+            inputController.MoveLeft += () => direction = Direction.Left;
+            inputController.MoveRight += () => direction = Direction.Right;
             inputController.Shoot += Attack;
+
         }
 
         public new void Attack()
@@ -38,14 +43,14 @@ namespace Assets.GameObjects.Heroes
             shot.transform.rotation = transform.rotation;
             shot.transform.position = transform.position + transform.forward;
 
-            shot.GetComponent<Rigidbody2D>().velocity = Vector2.right * Speed;
-            /*if (direction == Direction.Right)
+            if (direction == Direction.Right)
             {
+                shot.GetComponent<Rigidbody2D>().velocity = Vector2.right * Speed;
             }
             else
             {
                 shot.GetComponent<Rigidbody2D>().velocity = Vector2.left * Speed;
-            }*/
+            }
 
             shot.GetComponent<Shot>().ShotSpeed = Speed;
             shot.GetComponent<Shot>().ShotDamage = Damage;
