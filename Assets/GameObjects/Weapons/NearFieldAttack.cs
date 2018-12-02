@@ -19,6 +19,8 @@ namespace Assets.GameObjects.Weapons
         [SerializeField]
         private float _attackRate;
 
+        private bool _isInRange;
+
         private float _timer;
 
         public int Damage
@@ -83,6 +85,18 @@ namespace Assets.GameObjects.Weapons
             set
             {
                 _attackRate = value;
+            }
+        }
+
+        public bool IsInRange
+        {
+            get
+            {
+                return _isInRange;
+            }
+            set
+            {
+                _isInRange = value;
             }
         }
 

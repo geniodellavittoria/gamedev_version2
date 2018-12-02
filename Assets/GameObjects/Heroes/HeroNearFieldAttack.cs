@@ -3,6 +3,7 @@ using System.Collections;
 using Assets.GameObjects.Weapons;
 using Assets.Controllers;
 using System;
+using Assets.GameObjects.Characters;
 
 namespace Assets.GameObjects.Heroes
 {
@@ -11,6 +12,17 @@ namespace Assets.GameObjects.Heroes
 
         private InputController inputController;
 
+        private Health health;
+
+        public Collider2D attackTrigger;
+
+        private bool isAttacking;
+
+        public void Awake()
+        {
+            this.attackTrigger.enabled = false;
+        }
+
         private void Start()
         {
             inputController = InputManager.GetComponent<InputController>();
@@ -18,7 +30,7 @@ namespace Assets.GameObjects.Heroes
             {
                 Debug.LogError("GameObject does not contain inputController");
             }
-            inputController.Shoot += Attack;
+            inputController.Attack += Attack;
         }
 
         public void Attack()
@@ -27,13 +39,40 @@ namespace Assets.GameObjects.Heroes
 
             if (Timer >= AttackRate)
             {
+                isAttacking = true;
+                attackTrigger.enabled = true;
                 NearFieldAttack();
+                Timer = 0f;
             }
         }
 
         private void NearFieldAttack()
         {
-            throw new NotImplementedException();
+            if (IsInRange && health != null)
+            {
+                //var health = enemy.GetComponent<Health>();
+                health.TakeDamage(Damage);
+            }
+            isAttacking = false;
+            attackTrigger.enabled = false;
+        }
+
+        public void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.CompareTag("enemy") && col.isTrigger)
+            {
+                print(col.gameObject);
+                IsInRange = true;
+                health = col.gameObject.GetComponentInParent<Health>();
+            }
+        }
+
+        public void OnTriggerExit2D(Collider2D col)
+        {
+            if (col.CompareTag("enemy") && col.isTrigger)
+            {
+                IsInRange = false;
+            }
         }
 
     }

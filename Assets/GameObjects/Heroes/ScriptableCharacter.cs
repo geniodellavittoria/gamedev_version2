@@ -13,8 +13,6 @@ namespace Assets.GameObjects.Characters
         [SerializeField]
         private HeroHealth health;
 
-        private bool isAttacking;
-
         private bool isJumping;
         [SerializeField]
         private float _jumping;
@@ -45,7 +43,7 @@ namespace Assets.GameObjects.Characters
         private BonusItemController bonusItemController;
 
         public Text LifeText;
-        public Collider2D attackTrigger;
+
         private Rigidbody2D rb;
         private SphereCollider col;
         private Direction Direction = Direction.Right;
@@ -106,12 +104,6 @@ namespace Assets.GameObjects.Characters
             {
                 return health;
             }
-        }
-
-
-        public void Awake()
-        {
-            this.attackTrigger.enabled = false;
         }
 
         void Start()
@@ -198,12 +190,7 @@ namespace Assets.GameObjects.Characters
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.CompareTag("enemy"))
-            {
-                //col.SendMessageUpwards("TakeDamage", this.AttackDmg);
-            }
-
-            else if (col.CompareTag("bonus"))
+            if (col.CompareTag("bonus"))
             {
                 bonusItemController.Consume(col, this);
             }

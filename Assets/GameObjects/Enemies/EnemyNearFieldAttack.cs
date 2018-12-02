@@ -6,7 +6,8 @@ namespace Assets.GameObjects.Enemies
 {
     public class EnemyNearFieldAttack : NearFieldAttack
     {
-        public void Attack()
+
+        private void Update()
         {
             Timer += Time.deltaTime;
 
