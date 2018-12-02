@@ -61,7 +61,6 @@ namespace Assets.GameObjects.Heroes
         {
             if (col.CompareTag("enemy") && col.isTrigger)
             {
-                print(col.gameObject);
                 IsInRange = true;
                 health = col.gameObject.GetComponentInParent<Health>();
             }
