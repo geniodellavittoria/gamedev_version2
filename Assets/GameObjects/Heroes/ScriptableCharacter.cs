@@ -14,8 +14,7 @@ namespace Assets.GameObjects.Characters
         private HeroHealth health;
 
         private bool isAttacking;
-        private float attackTimer = 0;
-        private float attackCd = 0.3f;
+
         private bool isJumping;
         [SerializeField]
         private float _jumping;
@@ -27,16 +26,13 @@ namespace Assets.GameObjects.Characters
         private float _strength;
 
         [SerializeField]
-        private bool _isEnemy;
+        private bool _isEnemy = false;
 
         [SerializeField]
-        private float _attackDmg;
+        private HeroNearFieldAttack nearFieldAttack;
 
         [SerializeField]
-        private int _shotDmg;
-
-        [SerializeField]
-        private float _shotSpeed = 1;
+        private HeroShootAttack shootAttack;
 
         [SerializeField]
         private HeroMenuController heroMenuController;
@@ -44,7 +40,6 @@ namespace Assets.GameObjects.Characters
         private GameObject GameManager;
 
         private InputController inputController;
-        private ShotController shotController;
 
         [SerializeField]
         private BonusItemController bonusItemController;
@@ -105,43 +100,6 @@ namespace Assets.GameObjects.Characters
             }
         }
 
-        public float AttackDmg
-        {
-            get
-            {
-                return _attackDmg;
-            }
-
-            set
-            {
-                _attackDmg = value;
-            }
-        }
-
-        public int ShotDmg
-        {
-            get
-            {
-                return _shotDmg;
-            }
-            set
-            {
-                _shotDmg = value;
-            }
-        }
-
-        public float ShotSpeed
-        {
-            get
-            {
-                return _shotSpeed;
-            }
-            set
-            {
-                _shotSpeed = value;
-            }
-        }
-
         public HeroHealth Health
         {
             get
@@ -158,13 +116,11 @@ namespace Assets.GameObjects.Characters
 
         void Start()
         {
-            shotController = GameManager.GetComponent<ShotController>();
             inputController = GameManager.GetComponent<InputController>();
             inputController.MoveRight += MoveRight;
             inputController.MoveLeft += MoveLeft;
             inputController.Jump += Jump;
-            inputController.Attack += Attack;
-            inputController.Shoot += Shoot;
+            //inputController.Attack += Attack;
             rb = GetComponent<Rigidbody2D>();
             col = GetComponent<SphereCollider>();
         }
@@ -176,7 +132,7 @@ namespace Assets.GameObjects.Characters
                 heroMenuController.ShowMenu();
             }
 
-            if (isAttacking)
+            /*if (isAttacking)
             {
                 if (attackTimer > 0)
                 {
@@ -187,36 +143,15 @@ namespace Assets.GameObjects.Characters
                     isAttacking = false;
                     attackTrigger.enabled = false;
                 }
-            }
+            }*/
         }
 
-        public void Shoot()
-        {
-            var shot = shotController.Shoot(gameObject);
-            shot.transform.rotation = transform.rotation;
-            shot.transform.position = transform.position + transform.forward;
-
-            if (Direction == Direction.Right)
-            {
-                shot.GetComponent<Rigidbody2D>().velocity = Vector2.right * ShotSpeed;
-            }
-            else
-            {
-                shot.GetComponent<Rigidbody2D>().velocity = Vector2.left * ShotSpeed;
-            }
-
-            shot.GetComponent<Shot>().ShotSpeed = _shotSpeed;
-            shot.GetComponent<Shot>().ShotDamage = ShotDmg;
-            shot.GetComponent<Shot>().IsEnemyShot = false;
-            shot.SetActive(true);
-        }
-
-        public void Attack()
+        /*public void Attack()
         {
             isAttacking = true;
             attackTimer = attackCd;
             attackTrigger.enabled = true;
-        }
+        }*/
 
         public void Jump()
         {
@@ -226,7 +161,6 @@ namespace Assets.GameObjects.Characters
                 isJumping = true;
             }
         }
-
 
         public void MoveRight()
         {
@@ -248,11 +182,6 @@ namespace Assets.GameObjects.Characters
             transform.Translate(Vector2.left * Time.deltaTime * Speed);
         }
 
-        public void Move()
-        {
-
-        }
-
         public void TakeDamage(int damage)
         {
             health.TakeDamage(damage);
@@ -271,7 +200,7 @@ namespace Assets.GameObjects.Characters
         {
             if (col.CompareTag("enemy"))
             {
-                col.SendMessageUpwards("TakeDamage", this.AttackDmg);
+                //col.SendMessageUpwards("TakeDamage", this.AttackDmg);
             }
 
             else if (col.CompareTag("bonus"))
@@ -279,5 +208,6 @@ namespace Assets.GameObjects.Characters
                 bonusItemController.Consume(col, this);
             }
         }
+
     }
 }

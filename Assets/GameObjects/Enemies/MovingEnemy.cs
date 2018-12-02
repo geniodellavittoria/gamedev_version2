@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading;
 using Assets.GameObjects.Characters;
+using Assets.GameObjects.Heroes;
 using Assets.GameObjects.Weapons;
 using Assets.Scripts;
 using UnityEngine;
@@ -21,12 +23,13 @@ namespace Assets.GameObjects.Enemies
         private bool _isEnemy;
 
         [SerializeField]
-        private int _shotDmg;
+        private EnemyNearFieldAttack NearFieldAttack;
 
-        [SerializeField]
-        private float _shotSpeed = 1;
+        private GameObject hero;
+        private HeroHealth heroHealth;
 
         private Direction Direction = Direction.Right;
+        private bool heroInRange;
 
         public float Speed
         {
@@ -64,40 +67,6 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
-        public int ShotDmg
-        {
-            get
-            {
-                return _shotDmg;
-            }
-            set
-            {
-                _shotDmg = value;
-            }
-        }
-
-        public float ShotSpeed
-        {
-            get
-            {
-                return _shotSpeed;
-            }
-            set
-            {
-                _shotSpeed = value;
-            }
-        }
-
-        public MovingEnemy()
-        {
-
-        }
-
-        public void Shoot()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Die()
         {
             Destroy(gameObject);
@@ -123,6 +92,17 @@ namespace Assets.GameObjects.Enemies
             {
                 Destroy(gameObject);
             }
+        }
+
+        private void Awake()
+        {
+            hero = GameObject.FindGameObjectWithTag("hero");
+            if (hero == null)
+            {
+                Debug.LogError("No hero with tag Hero defined");
+            }
+            heroHealth = hero.GetComponent<HeroHealth>();
+
         }
 
         void Update()
@@ -191,6 +171,22 @@ namespace Assets.GameObjects.Enemies
             }
 
             return contactSide;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject == hero)
+            {
+                heroInRange = true;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject == hero)
+            {
+                heroInRange = false;
+            }
         }
     }
 }
