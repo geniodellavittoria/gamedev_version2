@@ -6,11 +6,12 @@ namespace Assets.GameObjects.Grounds
     public class SlipperyGround : Ground
     {
         [SerializeField]
-        private int _value;
+        private int slipperyValue;
 
         private void Start()
         {
             Nature = GroundNature.Slippery;
+            Value = slipperyValue;
         }
     }
 }

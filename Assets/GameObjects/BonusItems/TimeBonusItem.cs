@@ -5,8 +5,9 @@ namespace Assets.GameObjects.BonusItems
     {
         private new void Start()
         {
-            base.Start();
             Type = BonusItemType.Time;
+            bonusValues = new int[] { 2, 4, 6, 8, 10 };
+            base.Start();
         }
     }
 }

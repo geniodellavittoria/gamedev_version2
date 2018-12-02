@@ -8,8 +8,9 @@ namespace Assets.GameObjects.BonusItems
 
         private new void Start()
         {
-            base.Start();
             Type = BonusItemType.Toughness;
+            bonusValues = new int[] { 1, 2, 3 };
+            base.Start();
         }
     }
 }

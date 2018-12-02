@@ -10,11 +10,14 @@ namespace Assets.GameObjects.BonusItems
         [SerializeField]
         private GameObject GameManager;
 
+        [SerializeField]
+        private GameObject hero;
+
         private BonusItemController _bonusItemController;
         private BonusItemType _bonusItemType;
         private int _value;
 
-        private int[] bonusValues = new int[] { 5, 10, 15, 20, 25 };
+        private int[] _bonusValues;
         private string _bonusText;
 
         public BonusItemController BonusItemController
@@ -66,6 +69,32 @@ namespace Assets.GameObjects.BonusItems
             }
         }
 
+        public int[] bonusValues
+        {
+            get
+            {
+                return _bonusValues;
+            }
+            set
+            {
+                _bonusValues = value;
+            }
+
+        }
+
+
+        public GameObject Hero
+        {
+            get
+            {
+                return hero;
+            }
+            set
+            {
+                hero = value;
+            }
+        }
+
         // Use this for initialization
         protected void Start()
         {
@@ -73,7 +102,7 @@ namespace Assets.GameObjects.BonusItems
             Value = GetBonusValue();
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
+        protected void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("hero"))
             {
