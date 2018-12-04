@@ -26,11 +26,7 @@ namespace Assets.GameObjects.Grounds
             if (HeroOnGround)
             {
                 float moveHorizontal = Input.GetAxis("Horizontal");
-                //float moveVertical = Input.GetAxis("Vertical");
-                //print(moveHorizontal);
-                //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-                rb2d.velocity += Vector2.down * slipperyValue * moveHorizontal;
-                //Hero.GetComponent<Rigidbody2D>().AddForce(new Vector2(slipperyValue * 50 * moveHorizontal * Hero.GetComponent<ScriptableCharacter>().Speed * Time.deltaTime, rb2d.velocity.y));
+                rb2d.velocity += Vector2.right * slipperyValue * moveHorizontal; // right as its vector is positive
             }
         }
 
