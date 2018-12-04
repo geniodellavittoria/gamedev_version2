@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.Controllers;
+using System;
 
 namespace Assets.GameObjects.BonusItems
 {
@@ -58,25 +59,26 @@ namespace Assets.GameObjects.BonusItems
             Duration = GetDurationValue();
         }
 
-        protected new void Update()
+        protected void Update()
         {
             if (Finished)
             {
                 return;
             }
             Timer += Time.deltaTime;
-            if (Triggered)
+            if (Triggered && Duration <= Timer)
             {
-                if (Timer <= Duration)
-                {
-                    Activate();
-                    Timer = 0f;
-                }
-                else
-                {
-                    Deactivate();
-                    Finished = true;
-                }
+                Deactivate();
+                Finished = true;
+            }
+        }
+
+        protected void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.CompareTag("hero") && !Triggered)
+            {
+                Timer = 0f;
+                base.OnTriggerEnter2D(col);
             }
         }
 
@@ -89,7 +91,7 @@ namespace Assets.GameObjects.BonusItems
         {
             if (DurationValues != null)
             {
-                var ran = Random.Range(0, durationValues.Length);
+                var ran = UnityEngine.Random.Range(0, durationValues.Length);
                 return durationValues[ran];
             }
             return 0;

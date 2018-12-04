@@ -12,7 +12,7 @@ namespace Assets.GameObjects.BonusItems
         int Value { get; set; }
         string BonusText { get; set; }
 
-        bool Triggered { get; set; }
+        bool Triggered { get; }
 
         void Activate();
     }

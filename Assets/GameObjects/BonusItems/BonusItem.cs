@@ -17,7 +17,7 @@ namespace Assets.GameObjects.BonusItems
         private BonusItemType bonusItemType;
         private int _value;
 
-        private bool triggered = false;
+        public bool triggered;
 
         private int[] bonusValues;
         private string bonusText;
@@ -64,7 +64,12 @@ namespace Assets.GameObjects.BonusItems
         {
             get
             {
-                return "+" + Value + " " + bonusItemType.ToString();
+                var text = "";
+                if (Value >= 0)
+                {
+                    text += "+";
+                }
+                return text + Value + " " + bonusItemType.ToString();
             }
 
             set
@@ -105,14 +110,8 @@ namespace Assets.GameObjects.BonusItems
             {
                 return triggered;
             }
-
-            set
-            {
-                triggered = value;
-            }
         }
 
-        // Use this for initialization
         protected void Start()
         {
             BonusItemController = gameManager.GetComponent<BonusItemController>();
@@ -123,17 +122,10 @@ namespace Assets.GameObjects.BonusItems
         {
             if (col.CompareTag("hero") && !Triggered)
             {
-                gameObject.SetActive(false);
-                Triggered = true;
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.GetComponent<Collider2D>().enabled = false;
                 BonusItemController.DisplayText(BonusText);
-                //Update();
-            }
-        }
-
-        protected void Update()
-        {
-            if (Triggered)
-            {
+                triggered = true;
                 Activate();
             }
         }
