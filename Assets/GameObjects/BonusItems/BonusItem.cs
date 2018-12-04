@@ -8,28 +8,32 @@ namespace Assets.GameObjects.BonusItems
     public class BonusItem : MonoBehaviour, IBonusItem
     {
         [SerializeField]
-        private GameObject GameManager;
+        private GameObject gameManager;
 
         [SerializeField]
         private GameObject hero;
 
-        private BonusItemController _bonusItemController;
-        private BonusItemType _bonusItemType;
+        private BonusItemController bonusItemController;
+        private BonusItemType bonusItemType;
         private int _value;
 
-        private int[] _bonusValues;
-        private string _bonusText;
+        private bool triggered = false;
+
+        private int[] bonusValues;
+        private string bonusText;
+
+        public GameObject GameManager { get; private set; }
 
         public BonusItemController BonusItemController
         {
             get
             {
-                return _bonusItemController;
+                return bonusItemController;
             }
 
             set
             {
-                _bonusItemController = value;
+                bonusItemController = value;
             }
         }
 
@@ -37,11 +41,11 @@ namespace Assets.GameObjects.BonusItems
         {
             get
             {
-                return _bonusItemType;
+                return bonusItemType;
             }
             set
             {
-                _bonusItemType = value;
+                bonusItemType = value;
             }
         }
         public int Value
@@ -60,24 +64,24 @@ namespace Assets.GameObjects.BonusItems
         {
             get
             {
-                return "+" + Value + " " + _bonusItemType.ToString();
+                return "+" + Value + " " + bonusItemType.ToString();
             }
 
             set
             {
-                _bonusText = value;
+                bonusText = value;
             }
         }
 
-        public int[] bonusValues
+        public int[] BonusValues
         {
             get
             {
-                return _bonusValues;
+                return bonusValues;
             }
             set
             {
-                _bonusValues = value;
+                bonusValues = value;
             }
 
         }
@@ -95,26 +99,58 @@ namespace Assets.GameObjects.BonusItems
             }
         }
 
+        public bool Triggered
+        {
+            get
+            {
+                return triggered;
+            }
+
+            set
+            {
+                triggered = value;
+            }
+        }
+
         // Use this for initialization
         protected void Start()
         {
-            BonusItemController = GameManager.GetComponent<BonusItemController>();
+            BonusItemController = gameManager.GetComponent<BonusItemController>();
             Value = GetBonusValue();
         }
 
         protected void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.CompareTag("hero"))
+            if (col.CompareTag("hero") && !Triggered)
             {
                 gameObject.SetActive(false);
+                Triggered = true;
                 BonusItemController.DisplayText(BonusText);
+                //Update();
             }
         }
 
-        private int GetBonusValue()
+        protected void Update()
         {
-            var ran = Random.Range(0, bonusValues.Length);
-            return bonusValues[ran];
+            if (Triggered)
+            {
+                Activate();
+            }
+        }
+
+        protected int GetBonusValue()
+        {
+            if (BonusValues != null)
+            {
+                var ran = Random.Range(0, bonusValues.Length);
+                return bonusValues[ran];
+            }
+            return 0;
+        }
+
+        public virtual void Activate()
+        {
+
         }
     }
 }

@@ -14,6 +14,23 @@ namespace Assets.GameObjects.Heroes
         [SerializeField]
         private Image damageImage;
 
+        [SerializeField]
+        private bool _immutable = false;
+
+
+        public bool Immutable
+        {
+            get
+            {
+                return _immutable;
+            }
+            set
+            {
+                _immutable = value;
+            }
+        }
+
+
         public Color flashColour = new Color(1f, 0, 0, 0.1f);
 
         void Update()

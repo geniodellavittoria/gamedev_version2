@@ -1,27 +1,28 @@
-﻿using System;
+﻿using UnityEngine;
+using System.Collections;
 using Assets.GameObjects.Characters;
-using UnityEngine;
 
 namespace Assets.GameObjects.BonusItems
 {
-    public class SpeedBonusItem : DurationBonusItem
+    public class StrengthBonusItem : DurationBonusItem
     {
+
         private new void Start()
         {
-            Type = BonusItemType.Speed;
+            Type = BonusItemType.Strength;
             DurationValues = new float[] { 2.0f, 3.0f, 4.0f };
-            BonusValues = new int[] { 1, 2, 3 };
+            BonusValues = new int[] { -2, -1, 1, 2, 3 };
             base.Start();
         }
 
         public override void Activate()
         {
-            Hero.GetComponent<ScriptableCharacter>().Speed += Value;
+            Hero.GetComponent<ScriptableCharacter>().Strength += Value;
         }
 
         public override void Deactivate()
         {
-            Hero.GetComponent<ScriptableCharacter>().Speed -= Value;
+            Hero.GetComponent<ScriptableCharacter>().Strength -= Value;
         }
     }
 }

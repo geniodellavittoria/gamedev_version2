@@ -6,8 +6,7 @@ namespace Assets.GameObjects.BonusItems
         Life,
         Speed,
         Time,
-        Toughness,
-        Vulnerability,
+        Strength,
         Immutability
     }
 }

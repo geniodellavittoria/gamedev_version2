@@ -6,7 +6,7 @@ namespace Assets.GameObjects.Grounds
     public class SlipperyGround : Ground
     {
         [SerializeField]
-        private int slipperyValue;
+        private int slipperyValue = 0;
 
         private void Start()
         {

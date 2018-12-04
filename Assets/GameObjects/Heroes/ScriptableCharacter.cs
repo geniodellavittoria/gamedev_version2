@@ -101,6 +101,7 @@ namespace Assets.GameObjects.Characters
             }
         }
 
+
         void Start()
         {
             inputController = GameManager.GetComponent<InputController>();
@@ -119,26 +120,7 @@ namespace Assets.GameObjects.Characters
                 heroMenuController.ShowMenu();
             }
 
-            /*if (isAttacking)
-            {
-                if (attackTimer > 0)
-                {
-                    attackTimer -= Time.deltaTime;
-                }
-                else
-                {
-                    isAttacking = false;
-                    attackTrigger.enabled = false;
-                }
-            }*/
         }
-
-        /*public void Attack()
-        {
-            isAttacking = true;
-            attackTimer = attackCd;
-            attackTrigger.enabled = true;
-        }*/
 
         public void Jump()
         {
