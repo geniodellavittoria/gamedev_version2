@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using Assets.GameObjects.Heroes;
 
 namespace Assets.GameObjects.Weapons
 {
@@ -9,6 +10,9 @@ namespace Assets.GameObjects.Weapons
     {
         [SerializeField]
         private GameObject _inputManager;
+
+        [SerializeField]
+        private GameObject hero;
 
         [SerializeField]
         private float _speed = 0.05f;
@@ -112,7 +116,27 @@ namespace Assets.GameObjects.Weapons
 
         protected void AttackNearField()
         {
+            if (IsInRange)
+            {
+                hero.GetComponent<HeroHealth>().TakeDamage(Damage);
+                Timer = 0f;
+            }
+        }
 
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.CompareTag("hero"))
+            {
+                IsInRange = true;
+            }
+        }
+
+        private void OnCollisionExit2D(Collision2D col)
+        {
+            if (col.gameObject.CompareTag("hero"))
+            {
+                IsInRange = false;
+            }
         }
 
     }
