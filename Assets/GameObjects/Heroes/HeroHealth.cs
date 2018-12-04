@@ -48,10 +48,13 @@ namespace Assets.GameObjects.Heroes
 
         public new void TakeDamage(int amount)
         {
-            damaged = true;
-            currentHealth -= amount;
+            if (!Immutable)
+            {
+                damaged = true;
+                currentHealth -= amount;
 
-            healthSlider.value = currentHealth;
+                healthSlider.value = currentHealth;
+            }
 
             if (currentHealth <= 0 && !isDead)
             {
