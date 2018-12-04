@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Name: FastHero
   m_EditorClassIdentifier: 
   Name: Flash
+  isDead: 0
   Jumping: 10
   Speed: 100
   Strength: 10
-  Life: 10
+  Life: 0
+  Toughness: 0

@@ -41,6 +41,7 @@ namespace Assets.GameObjects.Characters
         private Hero[] Heroes;
 
         private InputController inputController;
+        private Hero currentHero;
 
         private Rigidbody2D rb;
         private SphereCollider col;
@@ -108,11 +109,11 @@ namespace Assets.GameObjects.Characters
         void Start()
         {
             var index = PlayerPrefs.GetInt("SelectedHero");
-            var selectedHero = Heroes[index];
+            currentHero = Heroes[index];
 
-            Jumping = selectedHero.Jumping;
-            Speed = selectedHero.Speed;
-            Strength = selectedHero.Strength;
+            Jumping = currentHero.Jumping;
+            Speed = currentHero.Speed;
+            Strength = currentHero.Strength;
             inputController = GameManager.GetComponent<InputController>();
             inputController.MoveRight += MoveRight;
             inputController.MoveLeft += MoveLeft;
@@ -124,11 +125,12 @@ namespace Assets.GameObjects.Characters
 
         void FixedUpdate()
         {
-            if (health.isDead)
+            if (health.isDead || transform.position.y < -50) //dies because falling of the ground 
             {
+                Time.timeScale = 0;
+                currentHero.isDead = true;
                 heroMenuController.ShowMenu();
             }
-
         }
 
         public void Jump()

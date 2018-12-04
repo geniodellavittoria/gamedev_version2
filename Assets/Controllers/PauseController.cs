@@ -21,7 +21,7 @@ namespace Assets.Controllers
             InputController.Pause += TogglePauseMenu;
         }
 
-        private void TogglePauseMenu()
+        public void TogglePauseMenu()
         {
             if (Time.timeScale == 1)
             {
@@ -34,6 +34,8 @@ namespace Assets.Controllers
                 PauseMenu.SetActive(false);
             }
         }
+
+
 
 
     }

@@ -10,6 +10,7 @@ namespace Assets.ScriptableObjects
     class Hero : ScriptableObject
     {
         public string Name;
+        public bool isDead;
         public int Jumping;
         public int Speed;
         public int Strength;
