@@ -2,6 +2,7 @@
 using Assets.Controllers;
 using Assets.GameObjects.Heroes;
 using Assets.GameObjects.Weapons;
+using Assets.ScriptableObjects;
 using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,6 +37,8 @@ namespace Assets.GameObjects.Characters
         private HeroMenuController heroMenuController;
         [SerializeField]
         private GameObject GameManager;
+        [SerializeField]
+        private Hero[] Heroes;
 
         private InputController inputController;
 
@@ -104,6 +107,12 @@ namespace Assets.GameObjects.Characters
 
         void Start()
         {
+            var index = PlayerPrefs.GetInt("SelectedHero");
+            var selectedHero = Heroes[index];
+
+            Jumping = selectedHero.Jumping;
+            Speed = selectedHero.Speed;
+            Strength = selectedHero.Strength;
             inputController = GameManager.GetComponent<InputController>();
             inputController.MoveRight += MoveRight;
             inputController.MoveLeft += MoveLeft;
