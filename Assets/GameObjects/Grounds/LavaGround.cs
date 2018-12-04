@@ -14,7 +14,6 @@ namespace Assets.GameObjects.Grounds
 
         private float timer;
 
-        private bool heroOnGround = false;
 
         private void Start()
         {
@@ -25,28 +24,16 @@ namespace Assets.GameObjects.Grounds
         public void Update()
         {
             timer += Time.deltaTime;
-
-            if (timer >= damageRate && heroOnGround)
+            if (HeroOnGround)
             {
-                Hero.GetComponent<HeroHealth>().TakeDamage(lavaDamage);
-                timer = 0f;
+                if (timer >= damageRate)
+                {
+                    Hero.GetComponent<HeroHealth>().TakeDamage(lavaDamage);
+                    timer = 0f;
+                }
             }
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("hero"))
-            {
-                heroOnGround = true;
-            }
-        }
 
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("hero"))
-            {
-                heroOnGround = false;
-            }
-        }
     }
 }

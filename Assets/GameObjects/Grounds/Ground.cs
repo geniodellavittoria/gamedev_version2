@@ -10,6 +10,9 @@ namespace Assets.GameObjects.Grounds
         private int _value;
         private GroundNature _nature;
 
+        private bool heroOnGround = false;
+
+
         public GroundNature Nature
         {
             get
@@ -35,6 +38,14 @@ namespace Assets.GameObjects.Grounds
             }
         }
 
+        public bool HeroOnGround
+        {
+            get
+            {
+                return heroOnGround;
+            }
+        }
+
         public GameObject Hero
         {
             get
@@ -43,16 +54,20 @@ namespace Assets.GameObjects.Grounds
             }
         }
 
-        // Use this for initialization
-        void Start()
+        protected void OnCollisionEnter2D(Collision2D collision)
         {
-
+            if (collision.gameObject.CompareTag("hero"))
+            {
+                heroOnGround = true;
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnCollisionExit2D(Collision2D collision)
         {
-
+            if (collision.gameObject.CompareTag("hero"))
+            {
+                heroOnGround = false;
+            }
         }
     }
 }
