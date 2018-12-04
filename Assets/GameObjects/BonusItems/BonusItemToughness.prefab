@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33132238569556526}
   - component: {fileID: 23480658973272122}
   - component: {fileID: 58048569500727916}
+  - component: {fileID: 114539827441505044}
   m_Layer: 0
   m_Name: BonusItemToughness
   m_TagString: bonus
@@ -99,3 +100,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114539827441505044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1246403951118944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752caaef9a0d94bf9bd1420e42333d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  hero: {fileID: 0}

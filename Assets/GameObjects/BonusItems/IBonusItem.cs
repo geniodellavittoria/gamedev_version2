@@ -11,5 +11,9 @@ namespace Assets.GameObjects.BonusItems
         BonusItemType Type { get; set; }
         int Value { get; set; }
         string BonusText { get; set; }
+
+        bool Triggered { get; }
+
+        void Activate();
     }
 }

@@ -8,25 +8,32 @@ namespace Assets.GameObjects.BonusItems
     public class BonusItem : MonoBehaviour, IBonusItem
     {
         [SerializeField]
-        private GameObject GameManager;
+        private GameObject gameManager;
 
-        private BonusItemController _bonusItemController;
-        private BonusItemType _bonusItemType;
+        [SerializeField]
+        private GameObject hero;
+
+        private BonusItemController bonusItemController;
+        private BonusItemType bonusItemType;
         private int _value;
 
-        private int[] bonusValues = new int[] { 5, 10, 15, 20, 25 };
-        private string _bonusText;
+        public bool triggered;
+
+        private int[] bonusValues;
+        private string bonusText;
+
+        public GameObject GameManager { get; private set; }
 
         public BonusItemController BonusItemController
         {
             get
             {
-                return _bonusItemController;
+                return bonusItemController;
             }
 
             set
             {
-                _bonusItemController = value;
+                bonusItemController = value;
             }
         }
 
@@ -34,11 +41,11 @@ namespace Assets.GameObjects.BonusItems
         {
             get
             {
-                return _bonusItemType;
+                return bonusItemType;
             }
             set
             {
-                _bonusItemType = value;
+                bonusItemType = value;
             }
         }
         public int Value
@@ -57,35 +64,85 @@ namespace Assets.GameObjects.BonusItems
         {
             get
             {
-                return "+" + Value + " " + _bonusItemType.ToString();
+                var text = "";
+                if (Value >= 0)
+                {
+                    text += "+";
+                }
+                return text + Value + " " + bonusItemType.ToString();
             }
 
             set
             {
-                _bonusText = value;
+                bonusText = value;
             }
         }
 
-        // Use this for initialization
+        public int[] BonusValues
+        {
+            get
+            {
+                return bonusValues;
+            }
+            set
+            {
+                bonusValues = value;
+            }
+
+        }
+
+
+        public GameObject Hero
+        {
+            get
+            {
+                return hero;
+            }
+            set
+            {
+                hero = value;
+            }
+        }
+
+        public bool Triggered
+        {
+            get
+            {
+                return triggered;
+            }
+        }
+
         protected void Start()
         {
-            BonusItemController = GameManager.GetComponent<BonusItemController>();
+            BonusItemController = gameManager.GetComponent<BonusItemController>();
             Value = GetBonusValue();
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
+        protected void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.CompareTag("hero"))
+            if (col.CompareTag("hero") && !Triggered)
             {
-                gameObject.SetActive(false);
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.GetComponent<Collider2D>().enabled = false;
                 BonusItemController.DisplayText(BonusText);
+                triggered = true;
+                Activate();
             }
         }
 
-        private int GetBonusValue()
+        protected int GetBonusValue()
         {
-            var ran = Random.Range(0, bonusValues.Length);
-            return bonusValues[ran];
+            if (BonusValues != null)
+            {
+                var ran = Random.Range(0, bonusValues.Length);
+                return bonusValues[ran];
+            }
+            return 0;
+        }
+
+        public virtual void Activate()
+        {
+
         }
     }
 }

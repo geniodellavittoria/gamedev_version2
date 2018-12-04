@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33473084458789260}
   - component: {fileID: 23997805951817580}
   - component: {fileID: 58105564870202782}
+  - component: {fileID: 114523776279898088}
   m_Layer: 0
   m_Name: BonusItemImmutability
   m_TagString: bonus
@@ -99,3 +100,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114523776279898088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933754037679324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26327beb5960142b4b69f9ec6064d36f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  hero: {fileID: 0}

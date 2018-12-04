@@ -6,11 +6,12 @@ namespace Assets.GameObjects.Grounds
     public class GripGround : Ground
     {
         [SerializeField]
-        private int _value;
+        private int gripValue = 0;
 
         private void Start()
         {
             Nature = GroundNature.Grip;
+            Value = gripValue;
         }
     }
 }
