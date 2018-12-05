@@ -6,8 +6,6 @@ namespace Assets.GameObjects.BonusItems
 {
     public class TimeBonusItem : BonusItem
     {
-        [SerializeField]
-        private GameObject GameManager;
 
         private new void Start()
         {

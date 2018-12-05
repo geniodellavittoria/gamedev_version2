@@ -22,7 +22,13 @@ namespace Assets.GameObjects.BonusItems
         private int[] bonusValues;
         private string bonusText;
 
-        public GameObject GameManager { get; private set; }
+        public GameObject GameManager
+        {
+            get
+            {
+                return gameManager;
+            }
+        }
 
         public BonusItemController BonusItemController
         {
