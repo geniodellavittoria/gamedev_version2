@@ -19,15 +19,14 @@ namespace Assets.Scripts
         public GameObject FinalMenu;
         public GameObject HeroMenu;
 
-        private void Awake()
+
+        public void ResetHeroes()
         {
-            if (AllHeroesAreDead())
+            for (int i = 0; i < heroes.Length; i++)
             {
-                for (int i = 0; i < heroes.Length; i++)
-                {
-                    heroes[i].isDead = true;
-                }
+                heroes[i].isDead = false;
             }
+
         }
         private void Start()
         {

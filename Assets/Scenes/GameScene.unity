@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641287, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1404,7 +1404,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3d19c721e8d1adf43baa01852c74fd80, type: 2}
   - {fileID: 11400000, guid: 7600057042e3ca54b8027140242420f0, type: 2}
   heroSelectPanel: {fileID: 541971738}
-  FinalMenu: {fileID: 307590813}
+  FinalMenu: {fileID: 1135280597}
   HeroMenu: {fileID: 196188782}
 --- !u!114 &541971741
 MonoBehaviour:
@@ -2566,6 +2566,11 @@ Prefab:
 --- !u!224 &1135280596 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224668430790437542, guid: f8cde65487798314ea8b015c839b3c76,
+    type: 2}
+  m_PrefabInternal: {fileID: 1135280595}
+--- !u!1 &1135280597 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1982757559715832, guid: f8cde65487798314ea8b015c839b3c76,
     type: 2}
   m_PrefabInternal: {fileID: 1135280595}
 --- !u!1001 &1167521322
