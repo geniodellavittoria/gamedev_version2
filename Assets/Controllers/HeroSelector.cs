@@ -16,7 +16,19 @@ namespace Assets.Scripts
         [SerializeField]
         private Hero[] heroes;
         public GameObject heroSelectPanel;
+        public GameObject FinalMenu;
+        public GameObject HeroMenu;
 
+        private void Awake()
+        {
+            if (AllHeroesAreDead())
+            {
+                for (int i = 0; i < heroes.Length; i++)
+                {
+                    heroes[i].isDead = true;
+                }
+            }
+        }
         private void Start()
         {
             if (!AllHeroesAreDead())
@@ -33,7 +45,8 @@ namespace Assets.Scripts
             }
             else
             {
-                heroSelectPanel.SetActive(false);
+                HeroMenu.SetActive(false);
+                FinalMenu.SetActive(true);
             }
         }
 

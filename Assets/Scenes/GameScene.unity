@@ -1404,6 +1404,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3d19c721e8d1adf43baa01852c74fd80, type: 2}
   - {fileID: 11400000, guid: 7600057042e3ca54b8027140242420f0, type: 2}
   heroSelectPanel: {fileID: 541971738}
+  FinalMenu: {fileID: 307590813}
+  HeroMenu: {fileID: 196188782}
 --- !u!114 &541971741
 MonoBehaviour:
   m_ObjectHideFlags: 0
