@@ -1261,11 +1261,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1570,6 +1570,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3d19c721e8d1adf43baa01852c74fd80, type: 2}
   - {fileID: 11400000, guid: 7600057042e3ca54b8027140242420f0, type: 2}
   heroSelectPanel: {fileID: 1477234751}
+  FinalMenu: {fileID: 1895003152}
+  HeroMenu: {fileID: 1895003152}
 --- !u!114 &1477234754
 MonoBehaviour:
   m_ObjectHideFlags: 0
