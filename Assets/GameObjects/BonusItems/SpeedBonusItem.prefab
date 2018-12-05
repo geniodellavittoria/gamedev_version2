@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58883285306733592}
   - component: {fileID: 114169326574531122}
   m_Layer: 0
-  m_Name: BonusItemSpeed
+  m_Name: SpeedBonusItem
   m_TagString: bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,3 +113,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   hero: {fileID: 0}
+  triggered: 0

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58105564870202782}
   - component: {fileID: 114523776279898088}
   m_Layer: 0
-  m_Name: BonusItemImmutability
+  m_Name: ImmutabilityBonusItem
   m_TagString: bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,3 +113,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   hero: {fileID: 0}
+  triggered: 0

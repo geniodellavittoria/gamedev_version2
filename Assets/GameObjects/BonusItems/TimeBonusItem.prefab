@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58579866129597116}
   - component: {fileID: 114542520689666214}
   m_Layer: 0
-  m_Name: BonusItemTime
+  m_Name: TimeBonusItem
   m_TagString: bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 48881ab1aaa8a4c63bd1277b71e30606, type: 2}
+  - {fileID: 2100000, guid: 7e59b9650efff436fa7329a723dd7d34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

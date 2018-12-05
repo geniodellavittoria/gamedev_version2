@@ -15,6 +15,6 @@ MonoBehaviour:
   isDead: 0
   Jumping: 10
   Speed: 10
-  Strength: 100
+  Strength: 10
   Life: 0
   Toughness: 0
