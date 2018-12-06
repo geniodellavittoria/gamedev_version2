@@ -16,4 +16,9 @@ public class MainMenuController : MonoBehaviour {
         HeroMenu.SetActive(true);
     }
 
+    public void OnQuitClick()
+    {
+        Application.Quit();
+    }
+
 }
