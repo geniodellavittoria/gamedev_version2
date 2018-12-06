@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadSceneOnClick : MonoBehaviour {
+public class LoadSceneOnClick: MonoBehaviour  {
 
 	public void LoadByIndex(int index)
     {
