@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Assets.GameObjects.Characters;
 using Assets.GameObjects.Heroes;
@@ -124,6 +126,7 @@ namespace Assets.GameObjects.Enemies
                 }
             }
             var contactSide = ChangeDirection(collision);
+            print(contactSide);
             if (contactSide == Direction.Down || contactSide == DirectionMethods.ReverseDirection(Direction))
             {
                 return;
@@ -145,32 +148,33 @@ namespace Assets.GameObjects.Enemies
 
         private Direction ChangeDirection(Collision2D collision)
         {
+            var directions = new Dictionary<Direction, int>();
+            directions.Add(Direction.Left, 0);
+            directions.Add(Direction.Right, 0);
+
             var contactSide = Direction;
 
-            Vector3 contactPoint = collision.contacts[0].point;
-            Vector3 center = collision.collider.bounds.center;
+            ContactPoint2D[] contactPoints = collision.contacts;
+            foreach (ContactPoint2D contactPoint in contactPoints)
+            {
+                //Vector3 contactPoint = collision.contacts[0].point;
+                Vector3 center = collision.collider.bounds.center;
 
-            float RectWidth = this.GetComponent<Collider2D>().bounds.size.x;
-            float RectHeight = this.GetComponent<Collider2D>().bounds.size.y;
+                float RectWidth = this.GetComponent<Collider2D>().bounds.size.x;
+                float RectHeight = this.GetComponent<Collider2D>().bounds.size.y;
 
-            if (contactPoint.y > center.y)
-            {
-                contactSide = Direction.Down;
+                if (contactPoint.point.x > center.x)
+                {
+                    directions[Direction.Left] += 1;
+                    contactSide = Direction.Left;
+                }
+                else if (contactPoint.point.x < center.x)
+                {
+                    directions[Direction.Right] += 1;
+                    contactSide = Direction.Right;
+                }
             }
-            else if (contactPoint.x > center.x)
-            {
-                contactSide = Direction.Left;
-            }
-            else if (contactPoint.x < center.x)
-            {
-                contactSide = Direction.Right;
-            }
-            else if (contactPoint.y < center.y)
-            {
-                contactSide = Direction.Up;
-            }
-
-            return contactSide;
+            return directions.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
