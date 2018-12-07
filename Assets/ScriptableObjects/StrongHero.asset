@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Tank
   isDead: 0
-  Jumping: 10
+  Jumping: 20
   Speed: 10
   Strength: 10
   Life: 0

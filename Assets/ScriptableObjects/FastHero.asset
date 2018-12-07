@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Flash
   isDead: 1
-  Jumping: 10
+  Jumping: 25
   Speed: 15
   Strength: 10
   Life: 0
