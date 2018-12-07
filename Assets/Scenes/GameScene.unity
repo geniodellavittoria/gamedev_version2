@@ -3575,7 +3575,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4603698940526336, guid: 891034908d5ee4eb5949515a60b12c58, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.3499999
+      value: 37.51
       objectReference: {fileID: 0}
     - target: {fileID: 4603698940526336, guid: 891034908d5ee4eb5949515a60b12c58, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3610,6 +3610,23 @@ Prefab:
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 1679600921}
+    - target: {fileID: 23921647585448124, guid: 891034908d5ee4eb5949515a60b12c58,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603698940526336, guid: 891034908d5ee4eb5949515a60b12c58, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603698940526336, guid: 891034908d5ee4eb5949515a60b12c58, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603698940526336, guid: 891034908d5ee4eb5949515a60b12c58, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891034908d5ee4eb5949515a60b12c58, type: 2}
   m_IsPrefabAsset: 0
