@@ -48,7 +48,10 @@ namespace Assets.GameObjects.Characters
         protected void Die()
         {
             isDead = true;
-            Destroy(gameObject);
+            if (!gameObject.CompareTag("hero"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
