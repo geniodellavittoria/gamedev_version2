@@ -237,6 +237,11 @@ Prefab:
       propertyPath: m_Color.b
       value: 0.20392157
       objectReference: {fileID: 0}
+    - target: {fileID: 114836640104519856, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8cde65487798314ea8b015c839b3c76, type: 2}
   m_IsPrefabAsset: 0
