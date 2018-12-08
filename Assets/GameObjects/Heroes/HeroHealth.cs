@@ -17,6 +17,7 @@ namespace Assets.GameObjects.Heroes
         [SerializeField]
         private bool _immutable = false;
 
+
         public Color flashColour = new Color(1f, 0, 0, 0.1f);
 
         public bool Immutable
@@ -31,11 +32,12 @@ namespace Assets.GameObjects.Heroes
             }
         }
 
-        public void InitializeWithHealth(int health)
+        public void InitializeWithHealth(int current, int max)
         {
-            currentHealth = health;
-            healthSlider.maxValue = health;
-            healthSlider.value = health;
+            this.isDead = false;
+            currentHealth = current;
+            healthSlider.maxValue = max;
+            healthSlider.value = currentHealth;
         }
 
 

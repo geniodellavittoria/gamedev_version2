@@ -13,8 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Kangaroo
   isDead: 1
-  Jumping: 40
+  Jumping: 35
   Speed: 10
   Strength: 10
   Life: 50
   Toughness: 0
+  Ammo: 10

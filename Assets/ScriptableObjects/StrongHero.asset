@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Name: StrongHero
   m_EditorClassIdentifier: 
   Name: Tank
-  isDead: 0
+  isDead: 1
   Jumping: 25
   Speed: 10
   Strength: 10
   Life: 10
   Toughness: 0
+  Ammo: 30

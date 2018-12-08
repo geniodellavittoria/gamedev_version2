@@ -13,7 +13,7 @@ namespace Assets.GameObjects.Characters
         public float flashSpeed = 5f;
 
 
-        public bool isDead { get; private set; }
+        public bool isDead { get; set; }
         protected bool damaged;
         // Use this for initialization
         void Awake()

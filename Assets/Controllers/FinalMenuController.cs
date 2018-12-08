@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FinalMenuController : MonoBehaviour {
+    public GameObject FinalMenu;
     private LoadSceneOnClick loadScene = new LoadSceneOnClick();
 	public void OnBackButtonClick()
     {

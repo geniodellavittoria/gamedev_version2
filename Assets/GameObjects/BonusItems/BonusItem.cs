@@ -128,7 +128,7 @@ namespace Assets.GameObjects.BonusItems
         {
             if (col.CompareTag("hero") && !Triggered)
             {
-                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 BonusItemController.DisplayText(BonusText);
                 triggered = true;

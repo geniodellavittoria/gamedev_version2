@@ -7,6 +7,7 @@ namespace Assets.GameObjects.BonusItems
         Speed,
         Time,
         Strength,
-        Immutability
+        Immutability,
+        Ammo
     }
 }

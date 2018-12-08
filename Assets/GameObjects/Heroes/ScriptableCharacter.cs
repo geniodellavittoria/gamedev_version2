@@ -41,7 +41,9 @@ namespace Assets.GameObjects.Characters
         private Hero[] Heroes;
 
         private InputController inputController;
+        private FinalMenuController finalMenuController;
         private Hero currentHero;
+        private int currentHeroIndex;
 
         private Rigidbody2D rb;
         private SphereCollider col;
@@ -103,19 +105,21 @@ namespace Assets.GameObjects.Characters
             {
                 return health;
             }
+
+            set
+            {
+                health = value;
+            }
         }
 
 
         void Start()
         {
-            var index = PlayerPrefs.GetInt("SelectedHero");
-            currentHero = Heroes[index];
-
-            Jumping = currentHero.Jumping;
-            Speed = currentHero.Speed;
-            Strength = currentHero.Strength;
-            Health.InitializeWithHealth(currentHero.Life);
+            currentHeroIndex = PlayerPrefs.GetInt("SelectedHero");
+            InitHero(currentHeroIndex);
+            shootAttack.InitializeWithAmmo(currentHero.Ammo);
             inputController = GameManager.GetComponent<InputController>();
+            inputController.SwitchHero += OnHeroSwitch;
             inputController.MoveRight += MoveRight;
             inputController.MoveLeft += MoveLeft;
             inputController.Jump += Jump;
@@ -124,13 +128,54 @@ namespace Assets.GameObjects.Characters
             col = GetComponent<SphereCollider>();
         }
 
+        void InitHero(int index)
+        {
+            currentHero = Heroes[index];
+            Jumping = currentHero.Jumping;
+            Speed = currentHero.Speed;
+            Strength = currentHero.Strength;
+            Health.InitializeWithHealth(currentHero.CurrentLife, currentHero.Life);
+        }
+
+
+        public void OnHeroSwitch()
+        {
+            // Save Current Lifepoints
+            currentHero.CurrentLife = Health.currentHealth;
+
+            var startIndex = currentHeroIndex;
+            currentHeroIndex++;
+            if (currentHeroIndex > 2)
+            {
+                currentHeroIndex = 0;
+            }
+
+            while (Heroes[currentHeroIndex].isDead)
+            {
+                if (startIndex == currentHeroIndex && currentHero.isDead)
+                {
+                    print("you lost");
+                    finalMenuController = GameManager.GetComponent<FinalMenuController>();
+                    finalMenuController.FinalMenu.SetActive(true);
+                    Destroy(this);
+                }
+                currentHeroIndex++;
+                if (currentHeroIndex > 2)
+                {
+                    currentHeroIndex = 0;
+                }
+            }
+            print(Heroes[currentHeroIndex].Name);
+            InitHero(currentHeroIndex);
+        }
+
+
         void FixedUpdate()
         {
             if (health.isDead || transform.position.y < -50) //dies because falling of the ground 
             {
-                Time.timeScale = 0;
                 currentHero.isDead = true;
-                heroMenuController.ShowMenu();
+                OnHeroSwitch();
             }
         }
 

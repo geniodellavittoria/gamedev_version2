@@ -12,6 +12,7 @@ namespace Assets.Controllers
         public event Action Shoot = delegate { };
         public event Action Pause = delegate { };
         public event Action Attack = delegate { };
+        public event Action SwitchHero = delegate { };
 
         protected static InputController s_Instance;
 
@@ -32,11 +33,11 @@ namespace Assets.Controllers
             {
                 Jump();
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 MoveLeft();
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 MoveRight();
             }
@@ -48,8 +49,12 @@ namespace Assets.Controllers
             {
                 Attack();
             }
-            if (Input.GetKeyDown(KeyCode.J)){
+            if (Input.GetKeyDown(KeyCode.S)){
                 Shoot();
+            }
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                SwitchHero();
             }
 
         }
