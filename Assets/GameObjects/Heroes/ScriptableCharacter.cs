@@ -114,6 +114,7 @@ namespace Assets.GameObjects.Characters
             Jumping = currentHero.Jumping;
             Speed = currentHero.Speed;
             Strength = currentHero.Strength;
+            Health.InitializeWithHealth(currentHero.Life);
             inputController = GameManager.GetComponent<InputController>();
             inputController.MoveRight += MoveRight;
             inputController.MoveLeft += MoveLeft;

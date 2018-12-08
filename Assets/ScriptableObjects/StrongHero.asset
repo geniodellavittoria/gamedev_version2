@@ -16,5 +16,5 @@ MonoBehaviour:
   Jumping: 20
   Speed: 10
   Strength: 10
-  Life: 0
+  Life: 10
   Toughness: 0
