@@ -6698,7 +6698,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 210521684}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -6710,7 +6710,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &229183663
 GameObject:
   m_ObjectHideFlags: 0
@@ -7455,7 +7455,7 @@ Prefab:
     - target: {fileID: 114834680285284172, guid: 7b5485b1b74ea48d4958afd14a559db4,
         type: 2}
       propertyPath: HorizontalMovement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1987029347743776, guid: 7b5485b1b74ea48d4958afd14a559db4, type: 2}
       propertyPath: m_TagString
@@ -7480,6 +7480,11 @@ Prefab:
         type: 2}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61811895019876692, guid: 7b5485b1b74ea48d4958afd14a559db4,
+        type: 2}
+      propertyPath: m_EdgeRadius
+      value: 0.001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b5485b1b74ea48d4958afd14a559db4, type: 2}
@@ -12926,6 +12931,16 @@ Prefab:
       propertyPath: AmmoText
       value: 
       objectReference: {fileID: 1174438070}
+    - target: {fileID: 61124073129405642, guid: 9c31161d64a304ba5821e6846ae7a27a,
+        type: 2}
+      propertyPath: m_EdgeRadius
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 61080094813176042, guid: 9c31161d64a304ba5821e6846ae7a27a,
+        type: 2}
+      propertyPath: m_EdgeRadius
+      value: 0.001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c31161d64a304ba5821e6846ae7a27a, type: 2}
   m_IsPrefabAsset: 0
