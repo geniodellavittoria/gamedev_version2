@@ -70,8 +70,8 @@ GameObject:
   - component: {fileID: 4231556836552694}
   - component: {fileID: 50936875337030514}
   - component: {fileID: 251250397074021326}
-  - component: {fileID: 114868839095422110}
   - component: {fileID: 61811895019876692}
+  - component: {fileID: 114834680285284172}
   m_Layer: 0
   m_Name: MovingPlatform
   m_TagString: Untagged
@@ -197,7 +197,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114868839095422110
+--- !u!114 &114834680285284172
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,9 +205,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1987029347743776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c043558b087345ca9d656490899b23a, type: 3}
+  m_Script: {fileID: 11500000, guid: 627a301c22d9944178fbdb910b4f55a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HorizontalMovement: 1
+  MovingDistance: 2
+  Speed: 1
 --- !u!212 &212565939974977464
 SpriteRenderer:
   m_ObjectHideFlags: 1
