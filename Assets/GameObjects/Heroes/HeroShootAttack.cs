@@ -42,6 +42,16 @@ namespace Assets.GameObjects.Heroes
             UpdateAmmoText();
         }
 
+        public void AddAmmo(int value)
+        {
+            currentAmmo += value;
+            if (currentAmmo > maximumAmmo)
+            {
+                currentAmmo = maximumAmmo;
+            }
+            UpdateAmmoText();
+        }
+
         public new void Attack()
         {
             Timer += Time.deltaTime;

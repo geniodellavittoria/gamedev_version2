@@ -113,3 +113,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   hero: {fileID: 0}
+  triggered: 0
