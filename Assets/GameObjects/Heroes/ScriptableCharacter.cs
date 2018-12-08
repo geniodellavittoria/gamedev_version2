@@ -115,6 +115,7 @@ namespace Assets.GameObjects.Characters
             Speed = currentHero.Speed;
             Strength = currentHero.Strength;
             Health.InitializeWithHealth(currentHero.Life);
+            shootAttack.InitializeWithAmmo(currentHero.Ammo);
             inputController = GameManager.GetComponent<InputController>();
             inputController.MoveRight += MoveRight;
             inputController.MoveLeft += MoveLeft;

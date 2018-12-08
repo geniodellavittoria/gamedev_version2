@@ -18,3 +18,4 @@ MonoBehaviour:
   Strength: 10
   Life: 50
   Toughness: 0
+  Ammo: 25

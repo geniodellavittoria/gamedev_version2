@@ -16,5 +16,6 @@ namespace Assets.ScriptableObjects
         public int Strength;
         public int Life;
         public int Toughness;
+        public int Ammo;
     }
 }
