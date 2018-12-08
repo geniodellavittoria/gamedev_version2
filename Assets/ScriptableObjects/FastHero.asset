@@ -14,7 +14,7 @@ MonoBehaviour:
   Name: Flash
   isDead: 0
   Jumping: 25
-  Speed: 15
+  Speed: 20
   Strength: 10
   Life: 50
   Toughness: 0

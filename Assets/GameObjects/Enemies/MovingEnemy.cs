@@ -126,7 +126,6 @@ namespace Assets.GameObjects.Enemies
                 }
             }
             var contactSide = ChangeDirection(collision);
-            print(contactSide);
             if (contactSide == Direction.Down || contactSide == DirectionMethods.ReverseDirection(Direction))
             {
                 return;
