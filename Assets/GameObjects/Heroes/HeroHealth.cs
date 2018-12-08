@@ -17,6 +17,8 @@ namespace Assets.GameObjects.Heroes
         [SerializeField]
         private bool _immutable = false;
 
+        [SerializeField]
+        private Image ImmutableImage;
 
         public Color flashColour = new Color(1f, 0, 0, 0.1f);
 
@@ -29,6 +31,14 @@ namespace Assets.GameObjects.Heroes
             set
             {
                 _immutable = value;
+                if (_immutable)
+                {
+                    ImmutableImage.enabled = true;
+                }
+                else
+                {
+                    ImmutableImage.enabled = false;
+                }
             }
         }
 

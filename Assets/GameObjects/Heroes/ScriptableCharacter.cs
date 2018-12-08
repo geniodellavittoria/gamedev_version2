@@ -41,6 +41,16 @@ namespace Assets.GameObjects.Characters
         [SerializeField]
         private Hero[] Heroes;
 
+        [SerializeField]
+        private Text SpeedText;
+
+        [SerializeField]
+        private Text StrengthText;
+
+        [SerializeField]
+        private Text JumpText;
+
+
         private InputController inputController;
         private FinalMenuController finalMenuController;
         private Hero currentHero;
@@ -61,6 +71,7 @@ namespace Assets.GameObjects.Characters
             set
             {
                 _jumping = value;
+                JumpText.text = Math.Round(_jumping, 0).ToString();
             }
         }
 
@@ -73,6 +84,7 @@ namespace Assets.GameObjects.Characters
             set
             {
                 _speed = value;
+                SpeedText.text = Math.Round(_speed, 0).ToString();
             }
         }
 
@@ -86,6 +98,7 @@ namespace Assets.GameObjects.Characters
             set
             {
                 _strength = value;
+                StrengthText.text = Math.Round(_strength, 0).ToString();
             }
         }
 

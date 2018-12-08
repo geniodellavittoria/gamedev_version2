@@ -16,6 +16,7 @@ MonoBehaviour:
   Jumping: 25
   Speed: 20
   Strength: 10
-  Life: 50
+  Life: 30
+  CurrentLife: 30
   Toughness: 0
   Ammo: 25

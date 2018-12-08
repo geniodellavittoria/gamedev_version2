@@ -17,6 +17,6 @@ MonoBehaviour:
   Speed: 10
   Strength: 10
   Life: 100
-  CurrentLife: 0
+  CurrentLife: 100
   Toughness: 0
   Ammo: 30
