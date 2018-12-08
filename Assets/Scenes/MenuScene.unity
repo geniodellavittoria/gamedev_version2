@@ -897,6 +897,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1982757559715832, guid: f8cde65487798314ea8b015c839b3c76,
     type: 2}
   m_PrefabInternal: {fileID: 223241516}
+--- !u!114 &223241518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223241517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d61f6397255c7a4dbf8d47d135fc192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HeroMenu: {fileID: 1895003152}
 --- !u!1 &223494198
 GameObject:
   m_ObjectHideFlags: 0

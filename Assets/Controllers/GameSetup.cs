@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,18 @@ namespace Assets.Controllers
 {
     public class GameSetup: MonoBehaviour
     {
-        public Transform hero;
-        public void OnLoadScene()
+        public GameObject HeroMenu;
+
+        public void ResetHeroes()
         {
-            Instantiate(hero, new Vector2(0, 0), Quaternion.identity);
+            HeroSelector selector = (HeroSelector)HeroMenu.transform.GetComponentInChildren(typeof(HeroSelector));
+            for (int i = 0; i < selector.heroes.Length; i++)
+            {
+                selector.heroes[i].isDead = false;
+                selector.heroes[i].CurrentLife = selector.heroes[i].Life;
+            }
+
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.ScriptableObjects;
+﻿using Assets.Controllers;
+using Assets.ScriptableObjects;
 using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,8 +12,8 @@ public class MainMenuController : MonoBehaviour {
 	public void OnPlayClick()
     {
         MainMenu.SetActive(false);
-        HeroSelector selector = (HeroSelector)HeroMenu.transform.GetComponentInChildren(typeof(HeroSelector));
-        selector.ResetHeroes();
+        var setup = MainMenu.GetComponent<GameSetup>();
+        setup.ResetHeroes();
         HeroMenu.SetActive(true);
     }
 

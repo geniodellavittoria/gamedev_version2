@@ -13,6 +13,7 @@ namespace Assets.Controllers
         public event Action Pause = delegate { };
         public event Action Attack = delegate { };
         public event Action SwitchHero = delegate { };
+        public event Action RestartGame = delegate { };
 
         protected static InputController s_Instance;
 
@@ -55,6 +56,10 @@ namespace Assets.Controllers
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 SwitchHero();
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                RestartGame();
             }
 
         }

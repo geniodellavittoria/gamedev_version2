@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Controllers
 {
@@ -33,6 +34,11 @@ namespace Assets.Controllers
                 Time.timeScale = 1;
                 PauseMenu.SetActive(false);
             }
+        }
+
+        public void EndGame()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0); //MainScene
         }
 
 

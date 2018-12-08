@@ -14,21 +14,12 @@ namespace Assets.Scripts
     public class HeroSelector : MonoBehaviour {
 
         [SerializeField]
-        private Hero[] heroes;
+        public Hero[] heroes;
         public GameObject heroSelectPanel;
         public GameObject FinalMenu;
         public GameObject HeroMenu;
+        private SceneController sceneController;
 
-
-        public void ResetHeroes()
-        {
-            for (int i = 0; i < heroes.Length; i++)
-            {
-                heroes[i].isDead = false;
-                heroes[i].CurrentLife = heroes[i].Life;
-            }
-
-        }
        
         public void OnHeroSelect(int heroChoice)
         {
@@ -41,4 +32,6 @@ namespace Assets.Scripts
             SceneManager.LoadScene(index);
         }
     }
+
+
 }

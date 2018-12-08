@@ -5,6 +5,7 @@ using Assets.GameObjects.Weapons;
 using Assets.ScriptableObjects;
 using Assets.Scripts;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.GameObjects.Characters
@@ -43,6 +44,7 @@ namespace Assets.GameObjects.Characters
         private InputController inputController;
         private FinalMenuController finalMenuController;
         private Hero currentHero;
+        private bool gameover = false;
         private int currentHeroIndex;
 
         private Rigidbody2D rb;
@@ -121,6 +123,7 @@ namespace Assets.GameObjects.Characters
             inputController = GameManager.GetComponent<InputController>();
             inputController.SwitchHero += OnHeroSwitch;
             inputController.MoveRight += MoveRight;
+            inputController.RestartGame += RestartGame;
             inputController.MoveLeft += MoveLeft;
             inputController.Jump += Jump;
             //inputController.Attack += Attack;
@@ -154,10 +157,8 @@ namespace Assets.GameObjects.Characters
             {
                 if (startIndex == currentHeroIndex && currentHero.isDead)
                 {
-                    print("you lost");
-                    finalMenuController = GameManager.GetComponent<FinalMenuController>();
-                    finalMenuController.FinalMenu.SetActive(true);
-                    Destroy(this);
+                    Finish();
+                    break;
                 }
                 currentHeroIndex++;
                 if (currentHeroIndex > 2)
@@ -169,13 +170,32 @@ namespace Assets.GameObjects.Characters
             InitHero(currentHeroIndex);
         }
 
+        private void Finish()
+        {
+            gameover = true;
+            finalMenuController = GameManager.GetComponent<FinalMenuController>();
+            finalMenuController.FinalMenu.SetActive(true);
+        }
+
+        void RestartGame()
+        {
+            if (gameover == true)
+            {
+                var setup = GameManager.GetComponent<GameSetup>();
+                setup.ResetHeroes();
+                SceneManager.LoadScene(1);
+            }
+        }
 
         void FixedUpdate()
         {
-            if (health.isDead || transform.position.y < -50) //dies because falling of the ground 
+            if (!gameover)
             {
-                currentHero.isDead = true;
-                OnHeroSwitch();
+                if (health.isDead || transform.position.y < -50) //dies because falling of the ground 
+                {
+                    currentHero.isDead = true;
+                    OnHeroSwitch();
+                }
             }
         }
 

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Assets.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "New Hero", menuName = "Hero")]
-    class Hero : ScriptableObject
+    public class Hero : ScriptableObject
     {
         public string Name;
         public bool isDead;
