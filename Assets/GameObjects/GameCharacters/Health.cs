@@ -48,6 +48,7 @@ namespace Assets.GameObjects.Characters
         protected void Die()
         {
             isDead = true;
+            Destroy(gameObject);
         }
     }
 
