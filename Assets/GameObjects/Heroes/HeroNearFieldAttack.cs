@@ -14,6 +14,7 @@ namespace Assets.GameObjects.Heroes
 
         private Health health;
 
+        [SerializeField]
         public Collider2D attackTrigger;
 
         private bool isAttacking;
