@@ -30,34 +30,35 @@ namespace Assets.Controllers
         }
         void FixedUpdate()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(InputControlsManager.ControlManager.jump))
             {
                 Jump();
             }
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(InputControlsManager.ControlManager.left1) || Input.GetKey(InputControlsManager.ControlManager.left2))
             {
                 MoveLeft();
             }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(InputControlsManager.ControlManager.right1) || Input.GetKey(InputControlsManager.ControlManager.right2))
             {
                 MoveRight();
             }
-            if (Input.GetKeyUp(KeyCode.Escape))
+            if (Input.GetKeyDown(InputControlsManager.ControlManager.pause))
             {
                 Pause();
             }
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(InputControlsManager.ControlManager.attack))
             {
                 Attack();
             }
-            if (Input.GetKeyDown(KeyCode.S)){
+            if (Input.GetKeyDown(InputControlsManager.ControlManager.shoot))
+            {
                 Shoot();
             }
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(InputControlsManager.ControlManager.switchHero))
             {
                 SwitchHero();
             }
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(InputControlsManager.ControlManager.restartGame))
             {
                 RestartGame();
             }
