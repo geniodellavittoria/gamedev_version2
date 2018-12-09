@@ -14658,6 +14658,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 521429756}
+  startMinutes: 2
+  startSeconds: 0
 --- !u!114 &1679600928
 MonoBehaviour:
   m_ObjectHideFlags: 0

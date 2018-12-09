@@ -16,7 +16,7 @@ namespace Assets.GameObjects.BonusItems
 
         public override void Activate()
         {
-            GameManager.GetComponent<TimeController>().ReduceSeconds(Value);
+            GameManager.GetComponent<TimeController>().AddSeconds(Value);
         }
     }
 }

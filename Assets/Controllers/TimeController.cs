@@ -9,18 +9,37 @@ namespace Assets.Controllers
         [SerializeField]
         private Text timeText;
 
+        [SerializeField]
+        private float startMinutes;
+
+        [SerializeField]
+        private float startSeconds;
 
         private string minutes;
         private string seconds;
 
         private float timer;
 
+        private void Start()
+        {
+            minutes = startMinutes.ToString("00");
+            seconds = startSeconds.ToString("00");
+            timer = startMinutes * 60 + startSeconds;
+        }
+
         private void Update()
         {
-            timer += Time.deltaTime;
+            timer -= Time.deltaTime;
 
-            minutes = Mathf.Floor(timer / 60).ToString("00");
-            seconds = (timer % 60).ToString("00");
+            if (seconds == "00" && minutes == "00")
+            {
+                print("GameOver");
+            }
+            else
+            {
+                minutes = Mathf.Floor(timer / 60).ToString("00");
+                seconds = (timer % 60).ToString("00");
+            }
 
             ShowText();
         }
@@ -39,7 +58,7 @@ namespace Assets.Controllers
         {
             timer += sec;
         }
-        
+
         public float GetTimer()
         {
             return this.timer;
