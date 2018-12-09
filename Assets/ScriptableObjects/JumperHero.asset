@@ -14,7 +14,7 @@ MonoBehaviour:
   Name: Jumpy
   isDead: 1
   Jumping: 35
-  Speed: 10
+  Speed: 7
   Strength: 10
   Life: 25
   CurrentLife: 25
