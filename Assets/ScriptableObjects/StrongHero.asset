@@ -11,12 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbc61a79cd7b2745a677a9fc095d798, type: 3}
   m_Name: StrongHero
   m_EditorClassIdentifier: 
-  Name: Tank
+  Name: Strong
   isDead: 1
   Jumping: 25
   Speed: 10
   Strength: 10
   Life: 100
-  CurrentLife: 100
+  CurrentLife: 63
   Toughness: 0
   Ammo: 30

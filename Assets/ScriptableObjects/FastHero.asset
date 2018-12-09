@@ -11,12 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbc61a79cd7b2745a677a9fc095d798, type: 3}
   m_Name: FastHero
   m_EditorClassIdentifier: 
-  Name: Flash
-  isDead: 0
+  Name: Fast
+  isDead: 1
   Jumping: 25
   Speed: 20
   Strength: 10
   Life: 30
-  CurrentLife: 30
+  CurrentLife: 12
   Toughness: 0
   Ammo: 25

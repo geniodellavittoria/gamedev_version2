@@ -4,6 +4,7 @@ using Assets.GameObjects.Heroes;
 using Assets.GameObjects.Weapons;
 using Assets.ScriptableObjects;
 using Assets.Scripts;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -49,6 +50,9 @@ namespace Assets.GameObjects.Characters
 
         [SerializeField]
         private Text JumpText;
+
+        [SerializeField]
+        private Text Name;
 
 
         private InputController inputController;
@@ -147,6 +151,7 @@ namespace Assets.GameObjects.Characters
         void InitHero(int index)
         {
             currentHero = Heroes[index];
+            Name.text = currentHero.Name;
             Jumping = currentHero.Jumping;
             Speed = currentHero.Speed;
             Strength = currentHero.Strength;

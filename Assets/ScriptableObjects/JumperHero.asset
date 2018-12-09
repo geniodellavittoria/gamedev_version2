@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbc61a79cd7b2745a677a9fc095d798, type: 3}
   m_Name: JumperHero
   m_EditorClassIdentifier: 
-  Name: Kangaroo
+  Name: Jumpy
   isDead: 1
   Jumping: 35
   Speed: 10

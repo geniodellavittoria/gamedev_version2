@@ -9,7 +9,6 @@ namespace Assets.ScriptableObjects
     [CreateAssetMenu(fileName = "New Hero", menuName = "Hero")]
     public class Hero : ScriptableObject
     {
-        public Sprite Icon;
         public string Name;
         public bool isDead;
         public int Jumping;

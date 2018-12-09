@@ -117,6 +117,10 @@ namespace Assets.GameObjects.Enemies
 
         void OnCollisionEnter2D(Collision2D collision)
         {
+            if (collision.otherCollider.GetType() == typeof(CircleCollider2D))
+            {
+                Destroy(gameObject);
+            }
             if (collision.gameObject.CompareTag("shot"))
             {
                 var shot = collision.gameObject.GetComponent<Shot>();
