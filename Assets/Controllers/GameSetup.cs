@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.Controllers
 {
-    public class GameSetup: MonoBehaviour
+    public class GameSetup : MonoBehaviour
     {
         public GameObject HeroMenu;
+        public Text playerName;
 
         public void ResetHeroes()
         {
@@ -22,5 +25,22 @@ namespace Assets.Controllers
 
         }
 
+        private int GetHighScore()
+        {
+            return PlayerPrefs.GetInt("HighScoreValue");
+        }
+
+        public void OnSaveButtonClick()
+        {
+            var highscore = GetHighScore();
+            var score = PlayerPrefs.GetInt("ScoreValue");
+            if (highscore < score)
+            {
+                PlayerPrefs.SetInt("HighScoreValue", score);
+                PlayerPrefs.SetString("HighScoreName", playerName.text);
+                PlayerPrefs.SetString("HighScoreDate", DateTime.Now.ToString());
+            }
+            SceneManager.LoadScene(0);
+        }
     }
 }

@@ -39,5 +39,10 @@ namespace Assets.Controllers
         {
             timer += sec;
         }
+        
+        public float GetTimer()
+        {
+            return this.timer;
+        }
     }
 }

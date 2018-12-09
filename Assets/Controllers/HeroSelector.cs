@@ -18,7 +18,6 @@ namespace Assets.Scripts
         public GameObject heroSelectPanel;
         public GameObject FinalMenu;
         public GameObject HeroMenu;
-        private SceneController sceneController;
 
        
         public void OnHeroSelect(int heroChoice)

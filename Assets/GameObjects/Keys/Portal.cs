@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using Assets.Controllers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 namespace Assets.GameObjects.Keys
 {
@@ -9,8 +10,15 @@ namespace Assets.GameObjects.Keys
     {
 
         [SerializeField]
+        private GameObject WinMenu;
+        [SerializeField]
+        private Text ScoreText;
+        [SerializeField]
         private GameObject GameManager;
+        [SerializeField]
+        private TimeController timeController;
         private KeyController KeyController;
+
         private void Start()
         {
             KeyController = GameManager.GetComponent<KeyController>();
@@ -34,6 +42,10 @@ namespace Assets.GameObjects.Keys
             if (col.CompareTag("hero"))
             {
                 print("You won");
+                int time = (int)timeController.GetTimer();
+                PlayerPrefs.SetInt("ScoreValue", time);
+                ScoreText.text = time.ToString();
+                WinMenu.SetActive(true);
             }
         }
     }

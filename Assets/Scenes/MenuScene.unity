@@ -904,6 +904,51 @@ Prefab:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 223644574988345624, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224668430790437542, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224668430790437542, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224668430790437542, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223644574988345624, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1531622044}
+    - target: {fileID: 223644574988345624, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_PlaneDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114836640104519856, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114836640104519856, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114836640104519856, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8cde65487798314ea8b015c839b3c76, type: 2}
   m_IsPrefabAsset: 0
@@ -2303,6 +2348,11 @@ Prefab:
     - target: {fileID: 114836640104519856, guid: f8cde65487798314ea8b015c839b3c76,
         type: 2}
       propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114836640104519856, guid: f8cde65487798314ea8b015c839b3c76,
+        type: 2}
+      propertyPath: m_ReferencePixelsPerUnit
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
