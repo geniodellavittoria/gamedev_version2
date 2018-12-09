@@ -50,17 +50,15 @@ namespace Assets.GameObjects.Characters
 
         [SerializeField]
         private Text JumpText;
+        
+        public GameObject[] HeroButtons;
 
-        [SerializeField]
-        private Text Name;
-
-
+        private Button currentHeroBtn;
         private InputController inputController;
         private FinalMenuController finalMenuController;
         private Hero currentHero;
         private bool gameover = false;
         private int currentHeroIndex;
-
         private Rigidbody2D rb;
         private SphereCollider col;
         private Direction Direction = Direction.Right;
@@ -149,9 +147,10 @@ namespace Assets.GameObjects.Characters
         }
 
         void InitHero(int index)
-        {
+        { 
+            currentHeroBtn = HeroButtons[currentHeroIndex].GetComponent<Button>();
+            currentHeroBtn.image.color = Color.green;
             currentHero = Heroes[index];
-            Name.text = currentHero.Name;
             Jumping = currentHero.Jumping;
             Speed = currentHero.Speed;
             Strength = currentHero.Strength;
@@ -161,6 +160,16 @@ namespace Assets.GameObjects.Characters
 
         public void OnHeroSwitch()
         {
+            if (currentHero.isDead)
+            {
+                currentHeroBtn = HeroButtons[currentHeroIndex].GetComponent<Button>();
+                currentHeroBtn.image.color = Color.red;
+            }
+            else
+            {
+                currentHeroBtn = HeroButtons[currentHeroIndex].GetComponent<Button>();
+                currentHeroBtn.image.color = Color.white;
+            }
             // Save Current Lifepoints
             currentHero.CurrentLife = Health.currentHealth;
 
@@ -184,6 +193,7 @@ namespace Assets.GameObjects.Characters
                     currentHeroIndex = 0;
                 }
             }
+            PlayerPrefs.SetInt("SelectedHero",currentHeroIndex);
             print(Heroes[currentHeroIndex].Name);
             InitHero(currentHeroIndex);
         }
