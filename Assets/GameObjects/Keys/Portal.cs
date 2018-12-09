@@ -32,7 +32,7 @@ namespace Assets.GameObjects.Keys
         {
             if (KeyController.AllKeysFound())
             {
-                gameObject.GetComponent<MeshRenderer>().enabled = true;
+                gameObject.GetComponent<SpriteRenderer>().enabled = true;
                 gameObject.GetComponent<Collider2D>().enabled = true;
             }
         }

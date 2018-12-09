@@ -14,9 +14,9 @@ MonoBehaviour:
   Name: Fast
   isDead: 1
   Jumping: 25
-  Speed: 20
+  Speed: 13
   Strength: 10
   Life: 30
-  CurrentLife: 12
+  CurrentLife: 30
   Toughness: 0
   Ammo: 25
