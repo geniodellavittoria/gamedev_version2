@@ -50,7 +50,7 @@ namespace Assets.GameObjects.Characters
 
         [SerializeField]
         private Text JumpText;
-        
+
         public GameObject[] HeroButtons;
 
         private Button currentHeroBtn;
@@ -101,6 +101,7 @@ namespace Assets.GameObjects.Characters
             {
                 _strength = value;
                 StrengthText.text = Math.Round(_strength, 0).ToString();
+                Health.Strength = _strength;
             }
         }
 
@@ -134,7 +135,6 @@ namespace Assets.GameObjects.Characters
         {
             currentHeroIndex = PlayerPrefs.GetInt("SelectedHero");
             InitHero(currentHeroIndex);
-            shootAttack.InitializeWithAmmo(currentHero.Ammo);
             inputController = GameManager.GetComponent<InputController>();
             inputController.SwitchHero += OnHeroSwitch;
             inputController.MoveRight += MoveRight;
@@ -147,14 +147,17 @@ namespace Assets.GameObjects.Characters
         }
 
         void InitHero(int index)
-        { 
+        {
             currentHeroBtn = HeroButtons[currentHeroIndex].GetComponent<Button>();
             currentHeroBtn.image.color = Color.green;
             currentHero = Heroes[index];
             Jumping = currentHero.Jumping;
             Speed = currentHero.Speed;
             Strength = currentHero.Strength;
-            Health.InitializeWithHealth(currentHero.CurrentLife, currentHero.Life);
+            Health.InitializeHealth(currentHero.CurrentLife, currentHero.Life);
+            Health.Strength = currentHero.Strength;
+            shootAttack.InitializeWithAmmo(currentHero.Ammo);
+
         }
 
 
@@ -193,7 +196,7 @@ namespace Assets.GameObjects.Characters
                     currentHeroIndex = 0;
                 }
             }
-            PlayerPrefs.SetInt("SelectedHero",currentHeroIndex);
+            PlayerPrefs.SetInt("SelectedHero", currentHeroIndex);
             print(Heroes[currentHeroIndex].Name);
             InitHero(currentHeroIndex);
         }

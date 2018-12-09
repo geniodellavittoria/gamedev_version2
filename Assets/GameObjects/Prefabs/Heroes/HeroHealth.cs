@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.GameObjects.Characters;
 using UnityEngine.UI;
+using System;
 
 namespace Assets.GameObjects.Heroes
 {
@@ -20,7 +21,21 @@ namespace Assets.GameObjects.Heroes
         [SerializeField]
         private Image ImmutableImage;
 
+        private float strength = 1f;
+
         public Color flashColour = new Color(1f, 0, 0, 0.1f);
+
+        public float Strength
+        {
+            get
+            {
+                return strength;
+            }
+            set
+            {
+                strength = value;
+            }
+        }
 
         public bool Immutable
         {
@@ -42,14 +57,13 @@ namespace Assets.GameObjects.Heroes
             }
         }
 
-        public void InitializeWithHealth(int current, int max)
+        public void InitializeHealth(int current, int max)
         {
             this.isDead = false;
             currentHealth = current;
             healthSlider.maxValue = max;
             healthSlider.value = currentHealth;
         }
-
 
         void Update()
         {
@@ -69,7 +83,7 @@ namespace Assets.GameObjects.Heroes
             if (!Immutable)
             {
                 damaged = true;
-                currentHealth -= amount;
+                currentHealth -= (int)Math.Floor(amount / (strength / 10));
 
                 healthSlider.value = currentHealth;
             }

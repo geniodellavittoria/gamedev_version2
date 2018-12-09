@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: StrongHero
   m_EditorClassIdentifier: 
   Name: Strong
-  isDead: 1
+  isDead: 0
   Jumping: 25
   Speed: 10
-  Strength: 10
+  Strength: 20
   Life: 60
-  CurrentLife: 60
+  CurrentLife: 54
   Toughness: 0
   Ammo: 30
