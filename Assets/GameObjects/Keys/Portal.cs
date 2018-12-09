@@ -53,9 +53,9 @@ namespace Assets.GameObjects.Keys
                 TimeValue.text = time + " = " + timePoints.ToString() + " Points";
 
                 int heroPoints = character.GetNumberOfAliveHeroes();
-                HeroValue.text = heroPoints.ToString();
+                HeroValue.text = heroPoints.ToString() +" x 10 = " + heroPoints*10 ;
 
-                int totalPoints = timePoints + heroPoints;
+                int totalPoints = timePoints + heroPoints*10;
                 ScoreText.text = totalPoints.ToString();
                 PlayerPrefs.SetInt("ScoreValue", totalPoints);
                 WinMenu.SetActive(true);
