@@ -270,5 +270,18 @@ namespace Assets.GameObjects.Characters
             }
         }
 
+        public int GetNumberOfAliveHeroes()
+        {
+            int counter = 0;
+            for (int i = 0; i < Heroes.Length; i++)
+            {
+                if (!Heroes[i].isDead)
+                {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+
     }
 }

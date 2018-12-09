@@ -1,4 +1,5 @@
 ﻿using Assets.Controllers;
+using Assets.GameObjects.Characters;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,15 @@ namespace Assets.GameObjects.Keys
         [SerializeField]
         private Text ScoreText;
         [SerializeField]
+        private Text HeroValue;
+        [SerializeField]
+        private Text TimeValue;
+        [SerializeField]
         private GameObject GameManager;
         [SerializeField]
         private TimeController timeController;
         private KeyController KeyController;
+        public ScriptableCharacter character;
 
         private void Start()
         {
@@ -42,9 +48,16 @@ namespace Assets.GameObjects.Keys
             if (col.CompareTag("hero"))
             {
                 print("You won");
-                int time = (int)timeController.GetTimer();
-                PlayerPrefs.SetInt("ScoreValue", time);
-                ScoreText.text = time.ToString();
+                string time = timeController.GetTimerText();
+                int timePoints = (int)timeController.GetTimer() + 1;
+                TimeValue.text = time + " = " + timePoints.ToString() + " Points";
+
+                int heroPoints = character.GetNumberOfAliveHeroes();
+                HeroValue.text = heroPoints.ToString();
+
+                int totalPoints = timePoints + heroPoints;
+                ScoreText.text = totalPoints.ToString();
+                PlayerPrefs.SetInt("ScoreValue", totalPoints);
                 WinMenu.SetActive(true);
             }
         }

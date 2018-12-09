@@ -44,9 +44,9 @@ namespace Assets.Controllers
             ShowText();
         }
 
-        private void ShowText()
+        public void ShowText()
         {
-            timeText.text = string.Format("{0}:{1}", minutes, seconds);
+            timeText.text = GetTimerText();
         }
 
         public void ReduceSeconds(int sec)
@@ -62,6 +62,11 @@ namespace Assets.Controllers
         public float GetTimer()
         {
             return this.timer;
+        }
+
+        public string GetTimerText()
+        {
+            return string.Format("{0}:{1}", minutes, seconds); ;
         }
     }
 }
