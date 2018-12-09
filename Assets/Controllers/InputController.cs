@@ -50,7 +50,7 @@ namespace Assets.Controllers
             {
                 Attack();
             }
-            if (Input.GetKey(InputControlsManager.ControlManager.shoot))
+            if (Input.GetKeyDown(InputControlsManager.ControlManager.shoot))
             {
                 Shoot();
             }

@@ -270,6 +270,7 @@ namespace Assets.GameObjects.Characters
                 || col.gameObject.CompareTag("enemy"))
             {
                 isJumping = false;
+                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
         }
 

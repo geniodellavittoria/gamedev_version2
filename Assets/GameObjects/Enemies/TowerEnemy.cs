@@ -105,6 +105,10 @@ namespace Assets.GameObjects.Enemies
             if (collision.gameObject.CompareTag("shot"))
             {
                 var shot = collision.gameObject.GetComponent<Shot>();
+                if (shot.Shooter.Equals(this))
+                {
+                    return;
+                }
                 if (!shot.IsEnemyShot)
                 {
                     TakeDamage(shot.ShotDamage);

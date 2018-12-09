@@ -25,6 +25,9 @@ namespace Assets.GameObjects.Enemies
         private bool _isEnemy;
 
         [SerializeField]
+        private CircleCollider2D headCollider;
+
+        [SerializeField]
         private EnemyNearFieldAttack NearFieldAttack;
 
         private GameObject hero;
@@ -117,7 +120,7 @@ namespace Assets.GameObjects.Enemies
 
         void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.otherCollider.GetType() == typeof(CircleCollider2D))
+            if (collision.otherCollider == headCollider)
             {
                 Destroy(gameObject);
             }

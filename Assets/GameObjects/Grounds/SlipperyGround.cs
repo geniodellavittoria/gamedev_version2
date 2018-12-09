@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Controllers;
 using Assets.GameObjects.Characters;
 using UnityEngine;
 
@@ -9,17 +10,27 @@ namespace Assets.GameObjects.Grounds
         [SerializeField]
         private int slipperyValue = 1;
 
+        [SerializeField]
+        private GameObject GameManager;
+
         private Rigidbody2D rb2d;
         private Vector2 defaultVelocity;
 
         private void Start()
         {
+            GameManager.GetComponent<InputController>().Jump += Jump;
             Nature = GroundNature.Slippery;
             Value = slipperyValue;
             rb2d = Hero.GetComponent<Rigidbody2D>();
             defaultVelocity = rb2d.velocity;
 
         }
+
+        void Jump()
+        {
+            rb2d.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        }
+
 
         private void Update()
         {
