@@ -63,6 +63,7 @@ namespace Assets.GameObjects.Characters
         private SphereCollider col;
         private Direction Direction = Direction.Right;
 
+
         public float Jumping
         {
             get
@@ -234,8 +235,8 @@ namespace Assets.GameObjects.Characters
         {
             if (!isJumping)
             {
-                rb.AddForce(Vector2.up * Jumping * 10);
                 isJumping = true;
+                rb.AddForce(Vector2.up * Jumping * 10);
             }
         }
 
@@ -264,10 +265,10 @@ namespace Assets.GameObjects.Characters
             health.TakeDamage(damage);
         }
 
-        private void OnCollisionEnter2D(Collision2D col)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (col.gameObject.CompareTag("ground")
-                || col.gameObject.CompareTag("enemy"))
+            if (collision.gameObject.CompareTag("ground")
+                || collision.gameObject.CompareTag("enemy"))
             {
                 isJumping = false;
                 gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);

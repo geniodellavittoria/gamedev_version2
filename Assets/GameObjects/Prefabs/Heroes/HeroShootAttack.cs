@@ -99,6 +99,10 @@ namespace Assets.GameObjects.Heroes
             {
                 AmmoText.color = Color.red;
             }
+            else
+            {
+                AmmoText.color = Color.white;
+            }
         }
     }
 }
