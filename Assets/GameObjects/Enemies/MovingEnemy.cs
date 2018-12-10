@@ -72,6 +72,8 @@ namespace Assets.GameObjects.Enemies
             }
         }
 
+        public bool CanMoving { get; private set; }
+
         public void Die()
         {
             Destroy(gameObject);
@@ -79,14 +81,18 @@ namespace Assets.GameObjects.Enemies
 
         public void Move()
         {
-            if (Direction == Direction.Right)
+            if (CanMoving)
             {
-                transform.Translate(Vector2.right * Time.deltaTime * Speed);
 
-            }
-            else
-            {
-                transform.Translate(Vector2.left * Time.deltaTime * Speed);
+                if (Direction == Direction.Right)
+                {
+                    transform.Translate(Vector2.right * Time.deltaTime * Speed);
+
+                }
+                else
+                {
+                    transform.Translate(Vector2.left * Time.deltaTime * Speed);
+                }
             }
         }
 
@@ -205,6 +211,11 @@ namespace Assets.GameObjects.Enemies
             {
                 heroInRange = false;
             }
+        }
+
+        private void OnBecameVisible()
+        {
+            CanMoving = true;
         }
     }
 }
