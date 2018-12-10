@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.GameObjects.Characters;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ namespace Assets.Controllers
 {
     public class TimeController : MonoBehaviour
     {
+        public ScriptableCharacter scriptableCharacter;
         [SerializeField]
         private Text timeText;
 
@@ -17,7 +19,6 @@ namespace Assets.Controllers
 
         private string minutes;
         private string seconds;
-
         private float timer;
 
         private void Start()
@@ -33,7 +34,7 @@ namespace Assets.Controllers
 
             if (seconds == "00" && minutes == "00")
             {
-                print("GameOver");
+                scriptableCharacter.SendMessageUpwards("Finish","the time expired");
             }
             else
             {
