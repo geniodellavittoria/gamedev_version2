@@ -187,7 +187,7 @@ namespace Assets.GameObjects.Characters
             {
                 if (startIndex == currentHeroIndex && currentHero.isDead)
                 {
-                    Finish();
+                    Finish("all Heroes are dead");
                     break;
                 }
                 currentHeroIndex++;
@@ -201,10 +201,13 @@ namespace Assets.GameObjects.Characters
             InitHero(currentHeroIndex);
         }
 
-        private void Finish()
+        private void Finish(string reason)
         {
             gameover = true;
             finalMenuController = GameManager.GetComponent<FinalMenuController>();
+            Transform child = finalMenuController.FinalMenu.transform.Find("FinalText");
+            TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
+            text.SetText("you lost because " + reason);
             finalMenuController.FinalMenu.SetActive(true);
         }
 

@@ -69546,7 +69546,7 @@ GameObject:
   - component: {fileID: 905431288}
   - component: {fileID: 905431287}
   m_Layer: 0
-  m_Name: Text
+  m_Name: FinalText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76960,6 +76960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11282ed79c7bf411ab4b7c7adbe1b9e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptableCharacter: {fileID: 1843794721}
   timeText: {fileID: 521429756}
   startMinutes: 1
   startSeconds: 59
