@@ -28,6 +28,7 @@ namespace Assets.Controllers
         void Start()
         {
         }
+
         void FixedUpdate()
         {
             if (Input.GetKeyDown(InputControlsManager.ControlManager.jump))

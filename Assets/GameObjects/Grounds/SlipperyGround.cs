@@ -28,11 +28,14 @@ namespace Assets.GameObjects.Grounds
 
         void Jump()
         {
-            rb2d.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if (HeroOnGround)
+            {
+                rb2d.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            }
         }
 
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (HeroOnGround)
             {
