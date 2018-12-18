@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: JumperHero
   m_EditorClassIdentifier: 
   Name: Jumpy
-  isDead: 1
+  isDead: 0
   Jumping: 35
-  Speed: 7
+  Speed: 5
   Strength: 10
   Life: 25
   CurrentLife: 25

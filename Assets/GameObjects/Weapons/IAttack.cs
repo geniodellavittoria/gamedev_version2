@@ -9,7 +9,7 @@ namespace Assets.GameObjects.Weapons
 
         int Damage { get; set; }
         float Speed { get; set; }
-        float AttackRate { get; set; }
+        float AttackCoolDown { get; set; }
 
         float Timer { get; set; }
 

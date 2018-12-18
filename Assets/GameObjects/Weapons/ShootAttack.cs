@@ -81,7 +81,7 @@ namespace Assets.GameObjects.Weapons
             }
         }
 
-        public float AttackRate
+        public float AttackCoolDown
         {
             get
             {

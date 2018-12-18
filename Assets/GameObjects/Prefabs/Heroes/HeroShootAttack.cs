@@ -56,7 +56,7 @@ namespace Assets.GameObjects.Heroes
         {
             Timer += Time.deltaTime;
 
-            if (Timer >= AttackRate)
+            if (Timer >= AttackCoolDown)
             {
                 Shoot();
             }

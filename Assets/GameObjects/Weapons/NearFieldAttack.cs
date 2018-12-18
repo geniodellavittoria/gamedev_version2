@@ -79,7 +79,7 @@ namespace Assets.GameObjects.Weapons
             }
         }
 
-        public float AttackRate
+        public float AttackCoolDown
         {
             get
             {
@@ -108,7 +108,7 @@ namespace Assets.GameObjects.Weapons
         {
             Timer += Time.deltaTime;
 
-            if (Timer >= AttackRate)
+            if (Timer >= AttackCoolDown)
             {
                 AttackNearField();
             }

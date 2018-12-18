@@ -14,6 +14,10 @@ namespace Assets.GameObjects.Heroes
 
         private Health health;
 
+        private float attackTimer = 0;
+        [SerializeField]
+        private GameObject Sword;
+
         [SerializeField]
         public Collider2D attackTrigger;
 
@@ -36,42 +40,38 @@ namespace Assets.GameObjects.Heroes
 
         public void Attack()
         {
-            Timer += Time.deltaTime;
-
-            if (Timer >= AttackRate)
+            if (!isAttacking)
             {
                 isAttacking = true;
                 attackTrigger.enabled = true;
-                NearFieldAttack();
-                Timer = 0f;
+                Sword.SetActive(true);
+                attackTimer = AttackCoolDown;
             }
         }
 
-        private void NearFieldAttack()
+        public void Update()
         {
-            if (IsInRange && health != null)
+            if (isAttacking)
             {
-                //var health = enemy.GetComponent<Health>();
-                health.TakeDamage(Damage);
+                if(attackTimer > 0)
+                {
+                    attackTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    isAttacking = false;
+                    attackTrigger.enabled = false;
+                    Sword.SetActive(false);
+                }
             }
-            isAttacking = false;
-            attackTrigger.enabled = false;
         }
 
         public void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("enemy") && col.isTrigger)
             {
-                IsInRange = true;
                 health = col.gameObject.GetComponentInParent<Health>();
-            }
-        }
-
-        public void OnTriggerExit2D(Collider2D col)
-        {
-            if (col.CompareTag("enemy") && col.isTrigger)
-            {
-                IsInRange = false;
+                health.TakeDamage(Damage);
             }
         }
 
