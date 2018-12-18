@@ -88730,6 +88730,11 @@ Prefab:
       propertyPath: m_AngularDrag
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 114353380016747052, guid: 9c31161d64a304ba5821e6846ae7a27a,
+        type: 2}
+      propertyPath: _attackRate
+      value: 0.015
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c31161d64a304ba5821e6846ae7a27a, type: 2}
   m_IsPrefabAsset: 0
@@ -89110,6 +89115,10 @@ Prefab:
       propertyPath: Hero
       value: 
       objectReference: {fileID: 1843794720}
+    - target: {fileID: 1121375820197912, guid: b33c45170500d40f18d08230b24db66f, type: 2}
+      propertyPath: m_TagString
+      value: enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33c45170500d40f18d08230b24db66f, type: 2}
   m_IsPrefabAsset: 0
