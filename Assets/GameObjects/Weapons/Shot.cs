@@ -61,7 +61,8 @@ namespace Assets.GameObjects.Weapons
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.gameObject == Shooter || (!IsEnemyShot && col.gameObject.CompareTag("hero")) || col.gameObject.CompareTag("bonus"))
+            if (col.gameObject == Shooter || (!IsEnemyShot && col.gameObject.CompareTag("hero")) || col.gameObject.CompareTag("bonus") ||
+            (!col.isTrigger && !col.gameObject.CompareTag("ground")))
             {
                 return;
             }
