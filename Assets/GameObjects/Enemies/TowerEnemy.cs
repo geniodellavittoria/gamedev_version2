@@ -18,8 +18,6 @@ namespace Assets.GameObjects.Enemies
 
         private Direction Direction = Direction.Left;
 
-        private BoxCollider2D[] EnemyColliders;
-
         [SerializeField]
         public GameObject Hero;
 
@@ -89,7 +87,6 @@ namespace Assets.GameObjects.Enemies
         void Start()
         {
             ShotController = GameManager.GetComponent<ShotController>();
-            EnemyColliders = gameObject.GetComponentsInChildren<BoxCollider2D>();
         }
 
         // Update is called once per frame
