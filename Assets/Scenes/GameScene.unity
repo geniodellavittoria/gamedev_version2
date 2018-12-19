@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641287, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -244,23 +244,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114133457703218924, guid: b33c45170500d40f18d08230b24db66f,
         type: 2}
-      propertyPath: Hero
-      value: 
-      objectReference: {fileID: 1843794720}
-    - target: {fileID: 114133457703218924, guid: b33c45170500d40f18d08230b24db66f,
-        type: 2}
       propertyPath: GameManager
       value: 
       objectReference: {fileID: 1679600921}
+    - target: {fileID: 114133457703218924, guid: b33c45170500d40f18d08230b24db66f,
+        type: 2}
+      propertyPath: Hero
+      value: 
+      objectReference: {fileID: 1843794720}
     - target: {fileID: 114863947469258198, guid: b33c45170500d40f18d08230b24db66f,
         type: 2}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1679600921}
-    - target: {fileID: 1834888958040648, guid: b33c45170500d40f18d08230b24db66f, type: 2}
-      propertyPath: m_TagString
-      value: enemy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33c45170500d40f18d08230b24db66f, type: 2}
   m_IsPrefabAsset: 0
@@ -80216,7 +80212,18 @@ Prefab:
       propertyPath: hero
       value: 
       objectReference: {fileID: 1843794720}
-    m_RemovedComponents: []
+    - target: {fileID: 58558954080063070, guid: e29cdc611654d44a7afb60510d232012,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 58558954080063070, guid: e29cdc611654d44a7afb60510d232012,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 58558954080063070, guid: e29cdc611654d44a7afb60510d232012, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: e29cdc611654d44a7afb60510d232012, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &232744348 stripped
@@ -80451,6 +80458,26 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 248540745}
   m_CullTransparentMesh: 0
+--- !u!1 &253387161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1284682739807568, guid: e29cdc611654d44a7afb60510d232012,
+    type: 2}
+  m_PrefabInternal: {fileID: 231920393}
+--- !u!70 &253387163
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 253387161}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.07, y: 0}
+  m_Size: {x: 0.01, y: 0.01}
+  m_Direction: 1
 --- !u!1 &272017838
 GameObject:
   m_ObjectHideFlags: 0
@@ -88908,6 +88935,16 @@ Prefab:
       propertyPath: m_Name
       value: MovingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 114955897233180574, guid: e29cdc611654d44a7afb60510d232012,
+        type: 2}
+      propertyPath: hero
+      value: 
+      objectReference: {fileID: 1843794720}
+    - target: {fileID: 114955897233180574, guid: e29cdc611654d44a7afb60510d232012,
+        type: 2}
+      propertyPath: _inputManager
+      value: 
+      objectReference: {fileID: 1679600921}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e29cdc611654d44a7afb60510d232012, type: 2}
   m_IsPrefabAsset: 0
@@ -90436,6 +90473,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114955897233180574, guid: e29cdc611654d44a7afb60510d232012,
+        type: 2}
+      propertyPath: hero
+      value: 
+      objectReference: {fileID: 1843794720}
+    - target: {fileID: 114955897233180574, guid: e29cdc611654d44a7afb60510d232012,
+        type: 2}
+      propertyPath: _inputManager
+      value: 
+      objectReference: {fileID: 1679600921}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e29cdc611654d44a7afb60510d232012, type: 2}
   m_IsPrefabAsset: 0
@@ -90761,6 +90808,21 @@ Prefab:
       propertyPath: m_Name
       value: TowerEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 114863947469258198, guid: b33c45170500d40f18d08230b24db66f,
+        type: 2}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 1679600921}
+    - target: {fileID: 114133457703218924, guid: b33c45170500d40f18d08230b24db66f,
+        type: 2}
+      propertyPath: GameManager
+      value: 
+      objectReference: {fileID: 1679600921}
+    - target: {fileID: 114133457703218924, guid: b33c45170500d40f18d08230b24db66f,
+        type: 2}
+      propertyPath: Hero
+      value: 
+      objectReference: {fileID: 1843794720}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33c45170500d40f18d08230b24db66f, type: 2}
   m_IsPrefabAsset: 0

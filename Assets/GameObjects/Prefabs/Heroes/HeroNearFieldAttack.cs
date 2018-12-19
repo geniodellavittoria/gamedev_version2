@@ -68,10 +68,11 @@ namespace Assets.GameObjects.Heroes
 
         public void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.CompareTag("enemy") && col.isTrigger)
+            if (col.CompareTag("enemy") && col.isTrigger && attackTrigger.enabled)
             {
                 health = col.gameObject.GetComponentInParent<Health>();
                 health.TakeDamage(Damage);
+                attackTrigger.enabled = false;
             }
         }
 
